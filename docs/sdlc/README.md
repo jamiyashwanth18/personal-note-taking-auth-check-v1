@@ -15,7 +15,7 @@ Screens
 - Notes list
 - Note editor
 
-**Documentation version:** v11
+**Documentation version:** v12
 <!-- sdlc:auto:end overview -->
 
 ## Contents
@@ -35,11 +35,11 @@ Screens
 | [Sprint plan](development/sprint-plan.md) | 3 sprints |
 | [Developer guide](development/developer-guide.md) | generated |
 | [API reference](development/api-reference.md) | 10 routes |
-| [Test report](testing/test-report.md) | running |
+| [Test report](testing/test-report.md) | passed |
 | [Tests](testing/test-cases.md) | 40 tests |
 | [Deployment guide](deployment/deployment-guide.md) | deployed |
 | [Runbook](deployment/runbook.md) | deployed |
 | [Release notes](deployment/release-notes.md) | 3 releases |
 | [Traceability matrix](traceability-matrix.md) | 15 requirements |
-| [Changelog](CHANGELOG.md) | 11 versions |
+| [Changelog](CHANGELOG.md) | 12 versions |
 <!-- sdlc:auto:end contents -->
