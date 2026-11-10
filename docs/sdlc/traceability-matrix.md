@@ -9,12 +9,12 @@ Built from recorded links, not written by a model: requirement key → plan item
 <!-- sdlc:auto:start matrix -->
 | Requirement | Epic | Title | Plan items | Sprint | Design | Code | Commits | Ticket | Tests | AC tests | Deployed |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| US-001 | EPIC-001 | Register from the Login screen | US-001 | 2 | POST /auth/register, auth_service, sessions, users, web_spa | — | — | pending | not run | 0/4 tested · 0/4 passing | — |
-| US-002 | EPIC-001 | Sign in with email and password | US-002 | 2 | GET /auth/me, POST /auth/login, auth_service, sessions, users, web_spa | — | — | pending | not run | 0/3 tested · 0/3 passing | — |
-| US-003 | EPIC-001 | Sign out | US-003 | 2 | POST /auth/logout, auth_service, sessions, web_spa | — | — | pending | not run | 0/2 tested · 0/2 passing | — |
+| US-001 | EPIC-001 | Register from the Login screen | US-001 | 2 | POST /auth/register, auth_service, sessions, users, web_spa | backend/tests/test_auth_api.py, frontend/src/App.tsx, frontend/src/lib/api.ts, frontend/src/lib/auth.tsx, frontend/src/screens/Login.test.tsx +3 more | ac66d94 | delivered | succeeded | 2/4 tested · 2/4 passing | — |
+| US-002 | EPIC-001 | Sign in with email and password | US-002 | 2 | GET /auth/me, POST /auth/login, auth_service, sessions, users, web_spa | — | ac66d94 | delivered | not run | 1/3 tested · 1/3 passing | — |
+| US-003 | EPIC-001 | Sign out | US-003 | 2 | POST /auth/logout, auth_service, sessions, web_spa | — | ac66d94 | delivered | not run | 0/2 tested · 0/2 passing | — |
 | US-004 | EPIC-001 | Session and password security | US-004 | 1 | auth_service, database, sessions, users | — | 7f593a4 | delivered | not run | 3/3 tested · 3/3 passing | bc6fa51ff85f |
-| US-005 | EPIC-002 | View my notes list | US-005 | 2 | GET /notes, notes, web_spa | — | — | pending | not run | 0/4 tested · 0/4 passing | — |
-| US-006 | EPIC-002 | Create a note | US-006 | 2 | POST /notes, notes, web_spa | — | — | pending | not run | 0/3 tested · 0/3 passing | — |
+| US-005 | EPIC-002 | View my notes list | US-005 | 2 | GET /notes, notes, web_spa | backend/tests/test_notes_api.py, frontend/src/App.tsx, frontend/src/screens/NoteEditor.tsx, frontend/src/screens/Notes.test.tsx, frontend/src/screens/Notes.tsx | 9abe997 | delivered | succeeded | 3/4 tested · 3/4 passing | — |
+| US-006 | EPIC-002 | Create a note | US-006 | 2 | POST /notes, notes, web_spa | — | 9abe997 | delivered | not run | 3/3 tested · 3/3 passing | — |
 | US-007 | EPIC-002 | Edit a note | US-007 | 3 | GET /notes/{id}, PUT /notes/{id}, notes, web_spa | — | — | not started | not run | 0/3 tested · 0/3 passing | — |
 | US-008 | EPIC-002 | Delete a note with confirmation | US-008 | 3 | DELETE /notes/{id}, notes, web_spa | — | — | not started | not run | 0/3 tested · 0/3 passing | — |
 | US-009 | EPIC-003 | Notes are visible only to their owner | US-009 | 3 | DELETE /notes/{id}, GET /notes, GET /notes/{id}, PUT /notes/{id}, api, notes, notes_service, users | — | — | not started | not run | 0/3 tested · 0/3 passing | — |
