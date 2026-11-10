@@ -3,7 +3,7 @@
 > Maintained by QuorQ AI SDLC. Text between `sdlc:auto` markers is regenerated; anything outside them is yours and is kept.
 
 <!-- sdlc:auto:start summary -->
-21 tests · Passed 20 · Failed 0 · Skipped 0 · Not run 1
+21 tests · Passed 21 · Failed 0 · Skipped 0 · Not run 0
 
 Acceptance criteria covered: 6/41 · passing: 6/41
 <!-- sdlc:auto:end summary -->
@@ -40,5 +40,5 @@ Acceptance criteria covered: 6/41 · passing: 6/41
 | — | test_the_openapi_document_builds | Unit | Passed | `backend/tests/test_health.py` |
 | — | test_nothing_is_seeded_without_the_bootstrap_settings | Unit | Passed | `backend/tests/test_seed.py` |
 | — | test_the_admin_is_seeded_once | Unit | Passed | `backend/tests/test_seed.py` |
-| — | the app loads | E2E | Not run yet | `frontend/e2e/example.spec.ts` |
+| — | the app loads | E2E | Passed | `frontend/e2e/example.spec.ts` |
 <!-- sdlc:auto:end tests -->

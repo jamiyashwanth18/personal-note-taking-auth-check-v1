@@ -3,38 +3,28 @@
 > Maintained by QuorQ AI SDLC. Text between `sdlc:auto` markers is regenerated; anything outside them is yours and is kept.
 
 <!-- sdlc:auto:start narrative -->
-### TEST-CHECKS-1 · draft · source: testing:run_checks
+### TEST-E2E-LATEST · draft · source: testing:latest-e2e-run
 
-Automated checks ran successfully: 7 of 7 passed. This run is not tied to any ticket.
+The latest E2E test run passed against the sandbox environment, with 1 of 1 tests passing. Only one E2E test is recorded, and the input does not say which user flow or screen it exercises.
 
-- Activity: run_checks
-- Ticket: none
-- Status: succeeded
-- Result: 7/7 checks passed
-- Not stated in input: what the 7 checks are, which requirements they cover, and when they ran.
-- No approval or sign-off was recorded.
+Recorded result:
+- Test type: End-to-end (E2E)
+- Run: latest available
+- Outcome: passed
+- Tests passed: 1/1
+- Target environment: sandbox
 
-### TEST-WRITE-1d7e8e25 · draft · source: testing:write_tests:1d7e8e25-e9cd-449c-99fd-a230f1c6ea62
+Not provided in the input, so not documented:
+- Run date or time
+- Test name, scenario, or steps
+- Which requirements (US-001 to US-015) or screens (Login, Notes list, Note editor) the test covers. related_ids is left empty rather than guessing a mapping.
+- Who ran or approved the run
+- Any defects found
+- Results for other environments
+- Other test types: unit, integration, manual/UAT, security, performance
+- Testing-phase sign-off or exit criteria
 
-Tests were written successfully for ticket 1d7e8e25-e9cd-449c-99fd-a230f1c6ea62. The step produced one test file.
-
-- Activity: write_tests
-- Ticket: 1d7e8e25-e9cd-449c-99fd-a230f1c6ea62
-- Status: succeeded
-- Output: 1 test file
-- Not stated in input: the ticket's scope, its requirement links (US-xxx), what the tests cover, and whether they were executed or passed.
-- Not stated in input: whether the 7/7 checks in TEST-CHECKS-1 include these tests.
-
-**Related:** 1d7e8e25-e9cd-449c-99fd-a230f1c6ea62
-
-### TEST-E2E-SANDBOX · draft · source: testing:e2e:latest
-
-The latest end-to-end run against the sandbox target is still running. It has reported 0/0 passed, so there are no results yet.
-
-- Run: latest E2E run
-- Target: sandbox
-- State: running (not complete)
-- Reported results: 0/0 passed (no test results recorded yet)
-- No pass/fail outcome can be documented until the run finishes.
-- Not stated in input: the scenarios in scope (e.g., Login, Notes list, Note editor flows) and their requirement links.
+Observation for reviewers:
+- One E2E test is the only recorded test evidence for an app with 15 known requirement keys.
+- Requirement-level test coverage cannot be confirmed from this input.
 <!-- sdlc:auto:end narrative -->
