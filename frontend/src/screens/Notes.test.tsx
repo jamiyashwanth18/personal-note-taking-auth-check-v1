@@ -46,7 +46,10 @@ afterEach(() => {
 
 describe("Notes", () => {
   it("[AC-013] lists titles in returned order and [AC-019] shows tags literally", async () => {
-    mockApi(() => ({ status: 200, body: [note("1", "<b>x</b>", "<script>1</script>"), note("2", "Old")] }));
+    mockApi(() => ({
+      status: 200,
+      body: [note("1", "<b>x</b>", "<script>1</script>"), note("2", "Old")],
+    }));
     open("/notes");
     const first = await screen.findByText("<b>x</b>");
     expect(first).toBeInTheDocument();
@@ -82,7 +85,9 @@ describe("Notes", () => {
 
   it("[AC-017] creates a note via POST and returns to the list", async () => {
     const calls = mockApi((c) =>
-      c.method === "POST" ? { status: 201, body: note("9", "T") } : { status: 200, body: [note("9", "T")] },
+      c.method === "POST"
+        ? { status: 201, body: note("9", "T") }
+        : { status: 200, body: [note("9", "T")] },
     );
     open("/notes/new");
     fireEvent.change(await screen.findByLabelText("Title"), { target: { value: "T" } });
@@ -105,7 +110,9 @@ describe("Notes", () => {
   it("[NFR-005] shows Note not found on 404", async () => {
     mockApi(() => ({ status: 404, body: { detail: "Note not found" } }));
     open("/notes/abc");
-    await waitFor(() => expect(screen.getByRole("heading", { name: "Note not found" })).toBeInTheDocument());
+    await waitFor(() =>
+      expect(screen.getByRole("heading", { name: "Note not found" })).toBeInTheDocument(),
+    );
   });
 
   it("[AC-014] saves via PUT /notes/{id}", async () => {
