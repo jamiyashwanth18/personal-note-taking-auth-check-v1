@@ -6,14 +6,6 @@ from datetime import datetime
 from pydantic import BaseModel, EmailStr, Field, field_validator
 
 
-class StubResponse(BaseModel):
-    """Placeholder body for a route that is not implemented yet."""
-
-    endpoint: str
-    status: str = "not_implemented"
-    detail: str = "Scaffolded from the approved API spec; no behaviour yet."
-
-
 class UserOut(BaseModel):
     id: uuid.UUID
     email: str

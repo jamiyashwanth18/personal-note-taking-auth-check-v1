@@ -14,18 +14,15 @@ def _split(value: str) -> list[str]:
 
 
 # The SPA's origin(s) for CORS, comma separated.
-ALLOWED_ORIGINS: list[str] = _split(
-    os.getenv("CORS_ALLOWED_ORIGINS") or os.getenv("ALLOWED_ORIGINS", "")
-) or _DEV_ORIGINS
+ALLOWED_ORIGINS: list[str] = (
+    _split(os.getenv("CORS_ALLOWED_ORIGINS") or os.getenv("ALLOWED_ORIGINS", "")) or _DEV_ORIGINS
+)
 
 # The shared API bearer the generated frontend sends. Public: never sign anything with it.
 SECRET_KEY: str = os.getenv("SECRET_KEY", "dev-shared-api-key")
 
 # Private. Signs tokens and sessions.
 JWT_SECRET_KEY: str = os.getenv("JWT_SECRET_KEY", "dev-only-jwt-secret-change-me")
-
-# Writable directory that survives redeploys.
-MEDIA_ROOT: str = os.getenv("MEDIA_ROOT", "./media")
 
 # First admin, set by the platform on the deployed API only. Unset locally and in tests:
 # seed nothing then.
