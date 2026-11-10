@@ -4,20 +4,20 @@
 
 <!-- sdlc:auto:start e2e -->
 **Status:** running
-**Target:** —
+**Target:** sandbox
 **Date:** 2026-11-10
 
 Passed: — · Failed: — · Skipped: — · Flaky: — · Total: —
 <!-- sdlc:auto:end e2e -->
 
 <!-- sdlc:auto:start unit -->
-**Coverage:** —
+**Coverage:** backend 91.4% · frontend 24.6%
 
-**Test cases:** — / — written
+**Test cases:** 0 / 18 written
 
-**Lines written:** —
+**Lines written:** 0
 
-**Files deferred:** —
+**Files deferred:** 0
 <!-- sdlc:auto:end unit -->
 
 <!-- sdlc:auto:start dev-checks -->
