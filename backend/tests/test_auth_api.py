@@ -219,3 +219,53 @@ def test_nfr007_error_responses_hide_internals(client: TestClient) -> None:
 
 
 # NFR-009 (hundreds of users) is a sizing target and cannot be meaningfully tested here.
+
+
+def _user_count(db: Session) -> int:
+    return len(db.scalars(select(User)).all())
+
+
+def test_ac002_case_variant_duplicate_leaves_one_row(
+    client: TestClient, db_session: Session
+) -> None:
+    assert register(client, "Case@Example.com").status_code == 201
+    r = register(client, "cAsE@example.COM")
+    assert r.status_code == 409
+    assert _user_count(db_session) == 1
+
+
+@pytest.mark.parametrize(
+    ("payload", "field"),
+    [
+        ({"email": "not-an-email", "password": PW}, "email"),
+        ({"email": "a@example.com", "password": "1234567"}, "password"),
+        ({"email": "a@example.com"}, "password"),
+        ({"password": PW}, "email"),
+    ],
+)
+def test_ac003_invalid_registration_is_422_and_creates_no_user(
+    client: TestClient, db_session: Session, payload: dict, field: str
+) -> None:
+    r = client.post("/auth/register", json=payload)
+    assert r.status_code == 422
+    errors = r.json()["detail"]
+    assert isinstance(errors, list) and errors
+    assert all({"field", "message"} <= set(e) for e in errors)
+    assert any(field in str(e["field"]) for e in errors)
+    assert _user_count(db_session) == 0
+
+
+def test_ac007_notes_require_token(client: TestClient) -> None:
+    nid = "00000000-0000-0000-0000-000000000001"
+    assert client.get("/notes").status_code == 401
+    assert client.post("/notes", json={"title": "x", "text": ""}).status_code == 401
+    assert client.get(f"/notes/{nid}").status_code == 401
+
+
+def test_nfr011_note_without_user_id_rejected_by_database(db_session: Session) -> None:
+    from app.models import Note
+
+    db_session.add(Note(title="orphan", body=""))
+    with pytest.raises(IntegrityError):
+        db_session.commit()
+    db_session.rollback()

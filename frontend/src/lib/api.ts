@@ -11,8 +11,7 @@
 // The generated screens do NOT use this yet -- they render seeded sample data, exactly as
 // they were approved. This is the seam to replace that with real calls, one screen at a
 // time.
-export const API_BASE_URL: string =
-  import.meta.env.VITE_API_BASE_URL ?? "http://localhost:8000";
+export const API_BASE_URL: string = import.meta.env.VITE_API_BASE_URL ?? "http://localhost:8000";
 
 // The shared bearer the deployed API expects (its SECRET_KEY). The platform bakes the
 // same value into both sides at deploy time, so authenticated calls work out of the box.
@@ -50,8 +49,20 @@ export function clearSessionToken(): void {
   }
 }
 
+export const UNAUTHORIZED_EVENT = "auth:unauthorized";
+
+export class ApiError extends Error {
+  status: number;
+  detail: unknown;
+  constructor(status: number, detail: unknown, message: string) {
+    super(`${message}: ${status}`);
+    this.status = status;
+    this.detail = detail;
+  }
+}
+
 export async function apiFetch<T>(path: string, init?: RequestInit): Promise<T> {
-  const bearer = getSessionToken() ?? API_SECRET_KEY;
+  const bearer = getSessionToken();
   // Join with exactly one slash: API_BASE_URL is baked with a trailing slash (the API
   // sits behind a /apps/<slug>/ path prefix) and paths start with "/", so a naive
   // concat yields "...//auth/me", which a path-prefix proxy need not route.
@@ -64,7 +75,17 @@ export async function apiFetch<T>(path: string, init?: RequestInit): Promise<T> 
     },
   });
   if (!response.ok) {
-    throw new Error(`${init?.method ?? "GET"} ${path} failed: ${response.status}`);
+    let detail: unknown = null;
+    try {
+      detail = ((await response.json()) as { detail?: unknown }).detail ?? null;
+    } catch {
+      // No JSON body.
+    }
+    if (response.status === 401) {
+      clearSessionToken();
+      window.dispatchEvent(new Event(UNAUTHORIZED_EVENT));
+    }
+    throw new ApiError(response.status, detail, `${init?.method ?? "GET"} ${path} failed`);
   }
   return response.status === 204 ? (undefined as T) : ((await response.json()) as T);
 }

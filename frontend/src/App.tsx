@@ -1,5 +1,6 @@
 import { NavLink, Navigate, Outlet, Route, Routes } from "react-router-dom";
 
+import { AuthProvider, ProtectedRoute } from "@/lib/auth";
 import Login from "@/screens/Login";
 import Notes from "@/screens/Notes";
 import NoteEditor from "@/screens/NoteEditor";
@@ -46,13 +47,21 @@ function Shell() {
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/login" element={<Login />} />
-      <Route element={<Shell />}>
-        <Route path="/notes" element={<Notes />} />
-        <Route path="/note-editor" element={<NoteEditor />} />
-      </Route>
-      <Route path="*" element={<Navigate to="/login" replace />} />
-    </Routes>
+    <AuthProvider>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route
+          element={
+            <ProtectedRoute>
+              <Shell />
+            </ProtectedRoute>
+          }
+        >
+          <Route path="/notes" element={<Notes />} />
+          <Route path="/note-editor" element={<NoteEditor />} />
+        </Route>
+        <Route path="*" element={<Navigate to="/login" replace />} />
+      </Routes>
+    </AuthProvider>
   );
 }
