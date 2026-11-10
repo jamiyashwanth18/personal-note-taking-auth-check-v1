@@ -3,128 +3,159 @@
 > Maintained by QuorQ AI SDLC. Text between `sdlc:auto` markers is regenerated; anything outside them is yours and is kept.
 
 <!-- sdlc:auto:start narrative -->
-### DEV-PLAN-V1 · approved · source: plan:version-1
+### DEV-PLAN-V1 · approved · source: plan:v1
 
-The development plan for the Personal Notes app is approved at version 1. It has three sprints, six epics, 15 stories and three tasks. No execution or progress data has been supplied yet.
+Development plan version 1 is approved. It covers 3 sprints and 6 epics for the Personal Notes app. In total there are 15 stories (49 story points) and 3 tasks under US-012.
 
-- Plan status: approved, version 1. Approver and date were not provided.
-- Sprints: Sprint 1, Sprint 2 and Sprint 3, each with capacity 20 (60 total).
-- Epics: EPIC-001 to EPIC-006, all unassigned and unpointed.
-- Stories: US-001 to US-015, 49 story points in total.
-- Tasks: US-012-T1, US-012-T2 and US-012-T3, unpointed.
-- Roles used: frontend-agent, backend-agent, security-agent, qa-agent and devops-agent.
-- Story-to-sprint assignment is NOT given in the input. Sprint goals suggest a grouping, but no mapping is recorded here.
-- Epic membership below is inferred from the item listing order (each story follows its epic). This is not an explicit parent field.
-- Gaps: there are no ticket statuses, completion records, commits, test results or dates. No item can be documented as implemented.
+- Plan status: approved, version 1. The approver and date were not provided.
+- Sprints: Sprint 1, Sprint 2 and Sprint 3, each with a capacity of 20. Total capacity is 60.
+- Epics and stories:
+  - EPIC-001 Accounts and sign-in:
+    - US-001 Register from the Login screen (5, frontend-agent)
+    - US-002 Sign in with email and password (5, frontend-agent)
+    - US-003 Sign out (2, frontend-agent)
+    - US-004 Session and password security (5, security-agent)
+  - EPIC-002 Notes list and note management:
+    - US-005 View my notes list (3, frontend-agent)
+    - US-006 Create a note (3, frontend-agent)
+    - US-007 Edit a note (3, frontend-agent)
+    - US-008 Delete a note with confirmation (2, frontend-agent)
+  - EPIC-003 Privacy and per-user isolation:
+    - US-009 Notes are visible only to their owner (3, qa-agent)
+    - US-010 No sharing or discovery features (1, qa-agent)
+  - EPIC-004 Responsive web interface:
+    - US-011 Use the app on phone and desktop (3, frontend-agent)
+  - EPIC-005 Notes and accounts API and storage:
+    - US-012 Accounts and notes API (8, backend-agent)
+      - US-012-T1, US-012-T2 and US-012-T3: see DEV-TASKS-US-012
+    - US-013 Persist users and notes in PostgreSQL (3, backend-agent)
+    - US-014 No external services needed (1, devops-agent)
+  - EPIC-006 Setup and usage documentation:
+    - US-015 Basic setup and usage guide (2, devops-agent)
+- Epics carry no points and no assigned role.
+- The input does not assign individual stories to sprints. Only the sprint goals indicate the intended grouping.
 
-**Related:** DEV-SPRINT-1, DEV-SPRINT-2, DEV-SPRINT-3, DEV-EPIC-001, DEV-EPIC-002, DEV-EPIC-003, DEV-EPIC-004, DEV-EPIC-005, DEV-EPIC-006
+**Related:** EPIC-001, EPIC-002, EPIC-003, EPIC-004, EPIC-005, EPIC-006, SPRINT-1, SPRINT-2, SPRINT-3
 
-### DEV-SPRINT-1 · approved · source: plan:Sprint 1
+### SPRINT-1 · approved · source: plan:Sprint 1
 
-Sprint 1 focuses on the backend foundation, with a capacity of 20 points.
+Sprint 1 targets the backend foundation, with a capacity of 20.
 
-- Goal (verbatim): Backend foundation: database schema, password hashing and sessions, user-scoped notes API, and a self-contained run setup.
+- Goal: Backend foundation. This covers the database schema, password hashing and sessions, the user-scoped notes API, and a self-contained run setup.
 - Capacity: 20.
-- Assigned items: not specified in input.
-- Outcome: not reported.
+- related_ids are inferred from the goal wording only. The input does not explicitly assign stories to this sprint.
 
-**Related:** DEV-PLAN-V1
+**Related:** DEV-PLAN-V1, US-004, US-012, US-013, US-014
 
-### DEV-SPRINT-2 · approved · source: plan:Sprint 2
+### SPRINT-2 · approved · source: plan:Sprint 2
 
-Sprint 2 targets the core user flows: register, sign in, sign out, view the Notes list and create notes. Capacity is 20 points.
+Sprint 2 targets user-facing account flows and note creation, with a capacity of 20.
 
-- Goal (verbatim): Users can register, sign in, sign out, see their Notes list and create notes.
+- Goal: Users can register, sign in, sign out, see their Notes list and create notes.
 - Capacity: 20.
-- Assigned items: not specified in input.
-- Outcome: not reported.
+- related_ids are inferred from the goal wording only. The input does not explicitly assign stories to this sprint.
+- No delivery record was provided for any story matching this goal.
 
-**Related:** DEV-PLAN-V1
+**Related:** DEV-PLAN-V1, US-001, US-002, US-003, US-005, US-006
 
-### DEV-SPRINT-3 · approved · source: plan:Sprint 3
+### SPRINT-3 · approved · source: plan:Sprint 3
 
-Sprint 3 covers edit and delete, per-user privacy verification, responsive layout, a scope check and documentation. Capacity is 20 points.
+Sprint 3 targets editing and deleting notes, per-user privacy verification, responsive layout, a scope check and documentation, with a capacity of 20.
 
-- Goal (verbatim): Edit and delete notes, verified per-user privacy, responsive layout, scope check and documentation.
+- Goal: Edit and delete notes, verified per-user privacy, responsive layout, scope check and documentation.
 - Capacity: 20.
-- Assigned items: not specified in input.
-- Outcome: not reported.
+- related_ids are inferred from the goal wording only. The input does not explicitly assign stories to this sprint.
+- No delivery record was provided for any story matching this goal.
 
-**Related:** DEV-PLAN-V1
+**Related:** DEV-PLAN-V1, US-007, US-008, US-009, US-010, US-011, US-015
 
-### DEV-EPIC-001 · approved · source: plan:EPIC-001
+### DEV-US-004 · draft · source: dev:US-004
 
-Accounts and sign-in epic: registration, sign-in, sign-out and session/password security. It holds four stories totalling 17 points.
+The Session and password security ticket is reported as delivered in commit 7f593a4.
 
-- EPIC-001: Accounts and sign-in (points=None, role unassigned).
-- US-001: Register from the Login screen. 5 pts, frontend-agent.
-- US-002: Sign in with email and password. 5 pts, frontend-agent.
-- US-003: Sign out. 2 pts, frontend-agent.
-- US-004: Session and password security. 5 pts, security-agent.
-- Note: the project description mentions only signing in with email and password. Registration (US-001) appears in the plan and the Sprint 2 goal but not in the description. Both versions are recorded here for confirmation.
-- Status of work: not reported.
+- Ticket: US-004 Session and password security (5 points, security-agent).
+- Status: delivered.
+- Commit: 7f593a474a5e8316892f192c68b75e62da0facda.
+- No implementation details, review approval or test results were provided.
 
-**Related:** US-001, US-002, US-003, US-004
+**Related:** US-004, EPIC-001, US-012
 
-### DEV-EPIC-002 · approved · source: plan:EPIC-002
+### DEV-US-012 · draft · source: dev:US-012
 
-Notes list and note management epic: view, create, edit and delete notes. It holds four stories totalling 11 points.
+The Accounts and notes API ticket is reported as delivered in commit 7f593a4.
 
-- EPIC-002: Notes list and note management (points=None, role unassigned).
-- US-005: View my notes list. 3 pts, frontend-agent.
-- US-006: Create a note. 3 pts, frontend-agent.
-- US-007: Edit a note. 3 pts, frontend-agent.
-- US-008: Delete a note with confirmation. 2 pts, frontend-agent.
-- Status of work: not reported.
+- Ticket: US-012 Accounts and notes API (8 points, backend-agent).
+- Status: delivered.
+- Commit: 7f593a474a5e8316892f192c68b75e62da0facda.
+- Planned tasks are listed in DEV-TASKS-US-012. Their individual statuses were not reported.
+- No endpoint list, review approval or test results were provided.
 
-**Related:** US-005, US-006, US-007, US-008
+**Related:** US-012, EPIC-005, US-012-T1, US-012-T2, US-012-T3, US-013
 
-### DEV-EPIC-003 · approved · source: plan:EPIC-003
+### DEV-TASKS-US-012 · draft · source: plan:US-012
 
-Privacy and per-user isolation epic: notes are visible only to their owner, with no sharing or discovery. It holds two QA-owned stories totalling 4 points.
+Three tasks were planned under US-012. No per-task delivery status was supplied.
 
-- EPIC-003: Privacy and per-user isolation (points=None, role unassigned).
-- US-009: Notes are visible only to their owner. 3 pts, qa-agent.
-- US-010: No sharing or discovery features. 1 pt, qa-agent.
-- Sprint 3 goal references 'verified per-user privacy' and a 'scope check'.
-- Status of work: not reported.
+- US-012-T1: Scaffold the API app with CORS, an error handler and a health check (backend-agent).
+- US-012-T2: Implement user-scoped notes CRUD endpoints (backend-agent).
+- US-012-T3: Add an API integration test suite (qa-agent).
+- Only the parent story US-012 has a delivery record.
+- Whether the integration test suite (T3) exists, and what its results are, was not reported.
 
-**Related:** US-009, US-010
+**Related:** US-012, US-012-T1, US-012-T2, US-012-T3
 
-### DEV-EPIC-004 · approved · source: plan:EPIC-004
+### DEV-US-013 · draft · source: dev:US-013
 
-Responsive web interface epic: the app should be usable on phone and desktop. It holds one story of 3 points.
+The ticket for persisting users and notes in PostgreSQL is reported as delivered in commit 7f593a4.
 
-- EPIC-004: Responsive web interface (points=None, role unassigned).
-- US-011: Use the app on phone and desktop. 3 pts, frontend-agent.
-- Status of work: not reported.
+- Ticket: US-013 Persist users and notes in PostgreSQL (3 points, backend-agent).
+- Status: delivered.
+- Commit: 7f593a474a5e8316892f192c68b75e62da0facda.
+- No schema details, migration information or test results were provided.
 
-**Related:** US-011
+**Related:** US-013, EPIC-005, US-012
 
-### DEV-EPIC-005 · approved · source: plan:EPIC-005
+### DEV-US-014 · draft · source: dev:US-014
 
-API and storage epic: the accounts/notes API, PostgreSQL persistence and a self-contained setup. It holds three stories totalling 12 points, plus three tasks under US-012.
+The No external services needed ticket is reported as delivered in commit 7f593a4.
 
-- EPIC-005: Notes and accounts API and storage (points=None, role unassigned).
-- US-012: Accounts and notes API. 8 pts, backend-agent.
-  - US-012-T1: Scaffold API app with CORS, error handler and health check. Unpointed, backend-agent.
-  - US-012-T2: Implement user-scoped notes CRUD endpoints. Unpointed, backend-agent.
-  - US-012-T3: Add API integration test suite. Unpointed, qa-agent.
-- US-013: Persist users and notes in PostgreSQL. 3 pts, backend-agent.
-- US-014: No external services needed. 1 pt, devops-agent.
-- Sprint 1 goal references the database schema, password hashing and sessions, the user-scoped notes API and a self-contained run setup.
-- Status of work: not reported.
+- Ticket: US-014 No external services needed (1 point, devops-agent).
+- Status: delivered.
+- Commit: 7f593a474a5e8316892f192c68b75e62da0facda.
+- No run or setup instructions were provided with the delivery.
 
-**Related:** US-012, US-013, US-014
+**Related:** US-014, EPIC-005
 
-### DEV-EPIC-006 · approved · source: plan:EPIC-006
+### DEV-RUN-STATUS · draft · source: dev:run
 
-Setup and usage documentation epic. It holds one story of 2 points.
+The development run is reported as 'completed', but only 4 of 15 stories have delivery records. All frontend, QA and documentation stories lack any delivery record, so the user-facing app cannot be confirmed as built.
 
-- EPIC-006: Setup and usage documentation (points=None, role unassigned).
-- US-015: Basic setup and usage guide. 2 pts, devops-agent.
-- Sprint 3 goal references documentation.
-- Status of work: not reported.
+Possible conflict between the two inputs:
+- Version A (run status): the development run status is 'completed'.
+- Version B (ticket list): only US-004, US-012, US-013 and US-014 are listed as delivered. Together these total 17 of 49 points.
 
-**Related:** US-015
+Delivery facts:
+- All four delivered tickets reference the same commit: 7f593a474a5e8316892f192c68b75e62da0facda.
+
+Stories with no delivery record:
+- US-001 Register
+- US-002 Sign in
+- US-003 Sign out
+- US-005 Notes list
+- US-006 Create note
+- US-007 Edit note
+- US-008 Delete note
+- US-009 Owner-only visibility
+- US-010 No sharing
+- US-011 Responsive layout
+- US-015 Setup and usage guide
+
+Impact:
+- The Login, Notes list and Note editor screens are not confirmed as built.
+- For that reason, no user_guide content is produced from this input.
+
+Action for a human:
+- Confirm whether the remaining stories were delivered, deferred or out of scope for this run.
+
+**Related:** US-001, US-002, US-003, US-005, US-006, US-007, US-008, US-009, US-010, US-011, US-015, DEV-PLAN-V1
 <!-- sdlc:auto:end narrative -->
