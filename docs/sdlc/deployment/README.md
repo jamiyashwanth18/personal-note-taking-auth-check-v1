@@ -3,29 +3,27 @@
 > Maintained by QuorQ AI SDLC. Text between `sdlc:auto` markers is regenerated; anything outside them is yours and is kept.
 
 <!-- sdlc:auto:start narrative -->
-### DEP-5a1920f53475 · draft · source: deployment:5a1920f53475
+### DEP-bc6fa51ff85f · draft · source: deployment:bc6fa51ff85f
 
-Version 5a1920f53475 of the Personal Notes app is live. The deployment has a frontend on AWS Amplify and a backend at a separate URL. Only status, version, and endpoints were provided.
+Version bc6fa51ff85f of the Personal Notes app is reported as live. The frontend and backend are served from separate URLs. No date, approver, or verification results were provided.
 
-Deployment record (as provided):
-- Status: live
-- Version: 5a1920f53475
+What the input states:
+- Deployment status: live
+- Version: bc6fa51ff85f
 - Frontend URL: https://p6d4f86f9a0c7.d3j61xaup4zgrx.amplifyapp.com
 - Backend URL: https://52-24-58-20.sslip.io/apps/6d4f86f9a0c7/
 
-Observations (derived from the URLs only):
-- The frontend is hosted on an AWS Amplify domain (amplifyapp.com).
-- The backend is served at a host that resolves through sslip.io to IP 52.24.58.20, under path /apps/6d4f86f9a0c7/.
-- The app identifier 6d4f86f9a0c7 appears in both URLs, which suggests both belong to the same app deployment.
-
-Not provided in input (left undocumented, not inferred):
-- Deployment date/time
-- Environment name (e.g., production or staging)
-- Who deployed or approved the release
-- Deployment method or pipeline
-- Post-deploy verification or smoke-test results
+Not provided in the input (left undocumented on purpose):
+- Deployment date and time
+- Who performed or approved the deployment
+- Environment name (for example, production or staging)
+- Release notes or changelog for this version
+- Smoke tests or post-deploy verification results
 - Rollback plan or previous version
-- Which requirements (US-001 to US-015) are included in this release
+- Which requirements (US-001 to US-015) are included in this build
 
-Record status is 'draft'. Live status was reported, but no formal approval was stated.
+Notes:
+- This entry's status is 'draft' because the input has no approval record. 'Live' describes the running deployment, not a documentation sign-off.
+- related_ids is empty because the input does not map this version to specific requirement keys. A human should confirm which requirements this build covers.
+- Based on their hostnames, the frontend appears to be hosted on AWS Amplify. The backend uses an sslip.io hostname that resolves to IP 52.24.58.20. These are inferences from the URLs only, not confirmed infrastructure details.
 <!-- sdlc:auto:end narrative -->
