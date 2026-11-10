@@ -8,7 +8,7 @@ import uuid
 from datetime import datetime
 
 from sqlalchemy import CHAR, DateTime, ForeignKey, Index, String, Text, Uuid, desc, func
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, validates
 
 from app.database import Base
 
@@ -23,6 +23,10 @@ class User(Base):
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), nullable=False
     )
+
+    @validates("email")
+    def _lowercase_email(self, _key: str, value: str) -> str:
+        return value.lower()
 
 
 class Note(Base):

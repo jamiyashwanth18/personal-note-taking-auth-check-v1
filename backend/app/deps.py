@@ -32,10 +32,16 @@ def get_current_user(request: Request, db: Annotated[DbSession, Depends(get_db)]
     if session is None or session.revoked_at is not None:
         raise _unauthenticated()
     now = datetime.now(UTC)
-    if session.expires_at is not None and session.expires_at <= now:
+    expires = session.expires_at
+    if expires is not None and expires.tzinfo is None:
+        expires = expires.replace(tzinfo=UTC)
+    if expires is not None and expires <= now:
         raise _unauthenticated()
     idle = timedelta(minutes=config.SESSION_IDLE_TIMEOUT_MINUTES)
-    if now - session.last_seen_at > idle:
+    last_seen = session.last_seen_at
+    if last_seen.tzinfo is None:
+        last_seen = last_seen.replace(tzinfo=UTC)
+    if now - last_seen > idle:
         raise _unauthenticated()
     user = db.get(User, session.user_id)
     if user is None:
