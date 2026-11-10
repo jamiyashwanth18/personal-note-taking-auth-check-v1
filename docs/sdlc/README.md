@@ -15,7 +15,7 @@ Screens
 - Notes list
 - Note editor
 
-**Documentation version:** v9
+**Documentation version:** v10
 <!-- sdlc:auto:end overview -->
 
 ## Contents
@@ -27,7 +27,7 @@ Screens
 | [Architecture](architecture/README.md) | 28 entries |
 | [Development](development/README.md) | 16 entries |
 | [Testing](testing/README.md) | 1 entry |
-| [Deployment](deployment/README.md) | 1 entry |
+| [Deployment](deployment/README.md) | 3 entries |
 | [Maintenance](maintenance/README.md) | 0 entries |
 | [Data model](architecture/data-model.md) | generated |
 | [API (OpenAPI)](architecture/api/openapi.yaml) | generated |
@@ -35,11 +35,11 @@ Screens
 | [Sprint plan](development/sprint-plan.md) | 3 sprints |
 | [Developer guide](development/developer-guide.md) | generated |
 | [API reference](development/api-reference.md) | 10 routes |
-| [Test report](testing/test-report.md) | passed |
+| [Test report](testing/test-report.md) | running |
 | [Tests](testing/test-cases.md) | 40 tests |
 | [Deployment guide](deployment/deployment-guide.md) | deployed |
 | [Runbook](deployment/runbook.md) | deployed |
-| [Release notes](deployment/release-notes.md) | 2 releases |
+| [Release notes](deployment/release-notes.md) | 3 releases |
 | [Traceability matrix](traceability-matrix.md) | 15 requirements |
-| [Changelog](CHANGELOG.md) | 9 versions |
+| [Changelog](CHANGELOG.md) | 10 versions |
 <!-- sdlc:auto:end contents -->
