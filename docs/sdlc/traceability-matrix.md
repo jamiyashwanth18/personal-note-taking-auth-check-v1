@@ -9,19 +9,19 @@ Built from recorded links, not written by a model: requirement key → plan item
 <!-- sdlc:auto:start matrix -->
 | Requirement | Epic | Title | Plan items | Sprint | Design | Code | Commits | Ticket | Tests | AC tests | Deployed |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| US-001 | EPIC-001 | Register from the Login screen | — | — | — | — | — | not started | not run | 0/4 tested · 0/4 passing | — |
-| US-002 | EPIC-001 | Sign in with email and password | — | — | — | — | — | not started | not run | 0/3 tested · 0/3 passing | — |
-| US-003 | EPIC-001 | Sign out | — | — | — | — | — | not started | not run | 0/2 tested · 0/2 passing | — |
-| US-004 | EPIC-001 | Session and password security | — | — | — | — | — | not started | not run | 0/3 tested · 0/3 passing | — |
-| US-005 | EPIC-002 | View my notes list | — | — | — | — | — | not started | not run | 0/4 tested · 0/4 passing | — |
-| US-006 | EPIC-002 | Create a note | — | — | — | — | — | not started | not run | 0/3 tested · 0/3 passing | — |
-| US-007 | EPIC-002 | Edit a note | — | — | — | — | — | not started | not run | 0/3 tested · 0/3 passing | — |
-| US-008 | EPIC-002 | Delete a note with confirmation | — | — | — | — | — | not started | not run | 0/3 tested · 0/3 passing | — |
-| US-009 | EPIC-003 | Notes are visible only to their owner | — | — | — | — | — | not started | not run | 0/3 tested · 0/3 passing | — |
-| US-010 | EPIC-003 | No sharing or discovery features | — | — | — | — | — | not started | not run | 0/1 tested · 0/1 passing | — |
-| US-011 | EPIC-004 | Use the app on phone and desktop | — | — | — | — | — | not started | not run | 0/3 tested · 0/3 passing | — |
-| US-012 | EPIC-005 | Accounts and notes API | — | — | — | — | — | not started | not run | 0/3 tested · 0/3 passing | — |
-| US-013 | EPIC-005 | Persist users and notes in PostgreSQL | — | — | — | — | — | not started | not run | 0/3 tested · 0/3 passing | — |
-| US-014 | EPIC-005 | No external services needed | — | — | — | — | — | not started | not run | 0/1 tested · 0/1 passing | — |
-| US-015 | EPIC-006 | Basic setup and usage guide | — | — | — | — | — | not started | not run | 0/2 tested · 0/2 passing | — |
+| US-001 | EPIC-001 | Register from the Login screen | US-001 | 2 | POST /auth/register, auth_service, sessions, users, web_spa | — | — | not started | not run | 0/4 tested · 0/4 passing | — |
+| US-002 | EPIC-001 | Sign in with email and password | US-002 | 2 | GET /auth/me, POST /auth/login, auth_service, sessions, users, web_spa | — | — | not started | not run | 0/3 tested · 0/3 passing | — |
+| US-003 | EPIC-001 | Sign out | US-003 | 2 | POST /auth/logout, auth_service, sessions, web_spa | — | — | not started | not run | 0/2 tested · 0/2 passing | — |
+| US-004 | EPIC-001 | Session and password security | US-004 | 1 | auth_service, database, sessions, users | — | — | not started | not run | 0/3 tested · 0/3 passing | — |
+| US-005 | EPIC-002 | View my notes list | US-005 | 2 | GET /notes, notes, web_spa | — | — | not started | not run | 0/4 tested · 0/4 passing | — |
+| US-006 | EPIC-002 | Create a note | US-006 | 2 | POST /notes, notes, web_spa | — | — | not started | not run | 0/3 tested · 0/3 passing | — |
+| US-007 | EPIC-002 | Edit a note | US-007 | 3 | GET /notes/{id}, PUT /notes/{id}, notes, web_spa | — | — | not started | not run | 0/3 tested · 0/3 passing | — |
+| US-008 | EPIC-002 | Delete a note with confirmation | US-008 | 3 | DELETE /notes/{id}, notes, web_spa | — | — | not started | not run | 0/3 tested · 0/3 passing | — |
+| US-009 | EPIC-003 | Notes are visible only to their owner | US-009 | 3 | DELETE /notes/{id}, GET /notes, GET /notes/{id}, PUT /notes/{id}, api, notes, notes_service, users | — | — | not started | not run | 0/3 tested · 0/3 passing | — |
+| US-010 | EPIC-003 | No sharing or discovery features | US-010 | 3 | api, web_spa | — | — | not started | not run | 0/1 tested · 0/1 passing | — |
+| US-011 | EPIC-004 | Use the app on phone and desktop | US-011 | 3 | web_spa | — | — | not started | not run | 0/3 tested · 0/3 passing | — |
+| US-012 | EPIC-005 | Accounts and notes API | US-012, US-012-T1, US-012-T2, US-012-T3 | 1 | DELETE /notes/{id}, GET /health, GET /notes, GET /notes/{id}, POST /notes, PUT /notes/{id}, api, auth_service, notes, notes_service, sessions, users | — | — | not started | not run | 0/3 tested · 0/3 passing | — |
+| US-013 | EPIC-005 | Persist users and notes in PostgreSQL | US-013 | 1 | database, notes, sessions, users | — | — | not started | not run | 0/3 tested · 0/3 passing | — |
+| US-014 | EPIC-005 | No external services needed | US-014 | 1 | api, database | — | — | not started | not run | 0/1 tested · 0/1 passing | — |
+| US-015 | EPIC-006 | Basic setup and usage guide | US-015 | 3 | — | — | — | not started | not run | 0/2 tested · 0/2 passing | — |
 <!-- sdlc:auto:end matrix -->
