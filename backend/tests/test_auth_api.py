@@ -74,7 +74,12 @@ def test_ac034_login_failures_share_one_message(client: TestClient) -> None:
 
 @pytest.mark.parametrize(
     "headers",
-    [{}, {"Authorization": "Bearer"}, {"Authorization": "Basic abc"}, {"Authorization": "Bearer nope"}],
+    [
+        {},
+        {"Authorization": "Bearer"},
+        {"Authorization": "Basic abc"},
+        {"Authorization": "Bearer nope"},
+    ],
 )
 def test_ac034_missing_or_malformed_token_is_401(client: TestClient, headers: dict) -> None:
     for method, path in [("get", "/auth/me"), ("post", "/auth/logout"), ("get", "/notes")]:
@@ -125,7 +130,9 @@ def test_ac011_idle_session_expires(client: TestClient, db_session: Session) -> 
     _age_sessions(db_session, config.SESSION_IDLE_TIMEOUT_MINUTES + 1)
     assert client.get("/auth/me", headers=auth(t)).status_code == 401
     assert client.get("/notes", headers=auth(t)).status_code == 401
-    assert client.post("/notes", json={"title": "x", "text": ""}, headers=auth(t)).status_code == 401
+    assert (
+        client.post("/notes", json={"title": "x", "text": ""}, headers=auth(t)).status_code == 401
+    )
 
 
 def test_ac011_activity_within_window_keeps_session(

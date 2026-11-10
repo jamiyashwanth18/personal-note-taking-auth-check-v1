@@ -24,9 +24,7 @@ def upgrade() -> None:
     with op.batch_alter_table("sessions") as batch:
         batch.alter_column("expires_at", existing_type=sa.DateTime(timezone=True), nullable=True)
     op.create_index("ix_sessions_token_hash", "sessions", ["token_hash"])
-    op.create_index(
-        "ix_notes_user_id_updated_at", "notes", ["user_id", sa.text("updated_at DESC")]
-    )
+    op.create_index("ix_notes_user_id_updated_at", "notes", ["user_id", sa.text("updated_at DESC")])
 
 
 def downgrade() -> None:
