@@ -27,7 +27,11 @@ const btn: React.CSSProperties = {
   backgroundColor: brand.backgroundColor,
   color: P,
 };
-const btnPrimary: React.CSSProperties = { ...btn, backgroundColor: P, color: brand.backgroundColor };
+const btnPrimary: React.CSSProperties = {
+  ...btn,
+  backgroundColor: P,
+  color: brand.backgroundColor,
+};
 const label: React.CSSProperties = {
   display: "block",
   fontSize: 11,
@@ -124,7 +128,8 @@ export default function Screen() {
       const status = err instanceof ApiError ? err.status : 0;
       if (status === 404) setMissing(true);
       else if (status === 422) setTitleError("Add a title before saving. Nothing has been stored.");
-      else if (status !== 401) setSaveError("Couldn’t save the note. Check your connection and try again.");
+      else if (status !== 401)
+        setSaveError("Couldn’t save the note. Check your connection and try again.");
     } finally {
       setSaving(false);
     }
@@ -213,7 +218,10 @@ export default function Screen() {
             Plain text only. HTML or script tags are stored and shown exactly as typed.
           </p>
         </div>
-        <div className="flex flex-wrap items-center gap-2" style={{ borderTop: rule, paddingTop: 16 }}>
+        <div
+          className="flex flex-wrap items-center gap-2"
+          style={{ borderTop: rule, paddingTop: 16 }}
+        >
           <button type="submit" style={btnPrimary} disabled={saving}>
             <Icons.Check size={16} aria-hidden="true" /> {saving ? "Saving…" : "Save note"}
           </button>
@@ -232,7 +240,11 @@ export default function Screen() {
           )}
         </div>
         <p role="status" aria-live="polite" style={{ margin: "12px 0 0", fontSize: 13, color: N }}>
-          {saving ? "Saving…" : saved && note ? "Saved " + new Date(note.updated_at).toLocaleString("en-GB") : ""}
+          {saving
+            ? "Saving…"
+            : saved && note
+              ? "Saved " + new Date(note.updated_at).toLocaleString("en-GB")
+              : ""}
         </p>
       </form>
     );
@@ -241,7 +253,10 @@ export default function Screen() {
   return (
     <div style={{ color: P, fontFamily: brand.fontBody, padding: 16, maxWidth: 1080 }}>
       <header style={{ borderBottom: rule, paddingBottom: 16, marginBottom: 24 }}>
-        <div className="flex flex-wrap items-center justify-between gap-3" style={{ marginBottom: 16 }}>
+        <div
+          className="flex flex-wrap items-center justify-between gap-3"
+          style={{ marginBottom: 16 }}
+        >
           <button
             type="button"
             onClick={() => navigate("/notes")}
@@ -257,7 +272,8 @@ export default function Screen() {
               navigate("/login");
             }}
           >
-            <Icons.User size={16} aria-hidden="true" /> Sign out{user ? " (" + user.email + ")" : ""}
+            <Icons.User size={16} aria-hidden="true" /> Sign out
+            {user ? " (" + user.email + ")" : ""}
           </button>
         </div>
         <h1
@@ -304,7 +320,8 @@ export default function Screen() {
               Delete this note?
             </h2>
             <p id="del-desc" style={{ color: N, margin: "0 0 24px" }}>
-              “{note ? note.title : title}” will be permanently deleted from your account. This can’t be undone.
+              “{note ? note.title : title}” will be permanently deleted from your account. This
+              can’t be undone.
             </p>
             <div className="flex justify-end gap-2">
               <button type="button" autoFocus style={btn} onClick={() => setConfirmOpen(false)}>

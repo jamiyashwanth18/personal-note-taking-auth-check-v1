@@ -182,7 +182,9 @@ export default function Screen() {
                     </button>
                   </TD>
                   <TD style={{ maxWidth: 420, color: brand.neutralColor }}>
-                    <div style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                    <div
+                      style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}
+                    >
                       {n.text}
                     </div>
                   </TD>
