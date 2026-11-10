@@ -1,20 +1,66 @@
-"""Pydantic request and response models.
+"""Pydantic request and response models."""
 
-One pair per entity in the approved data model, plus the placeholder every
-generated route returns until it has been implemented.
-"""
+import uuid
+from datetime import datetime
 
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr, Field, field_validator
 
 
 class StubResponse(BaseModel):
-    """What a generated route returns until someone implements it.
-
-    A stub that returns a typed body rather than raising keeps the service
-    startable and its OpenAPI document complete, so the frontend can be built
-    against the agreed shape while the handlers are still being written.
-    """
+    """Placeholder body for a route that is not implemented yet."""
 
     endpoint: str
     status: str = "not_implemented"
     detail: str = "Scaffolded from the approved API spec; no behaviour yet."
+
+
+class UserOut(BaseModel):
+    id: uuid.UUID
+    email: str
+
+
+class RegisterIn(BaseModel):
+    email: EmailStr
+    password: str = Field(min_length=8, max_length=256)
+
+
+class LoginIn(BaseModel):
+    email: str
+    password: str = Field(max_length=256)
+
+
+class LoginOut(BaseModel):
+    token: str
+    token_type: str = "bearer"
+    user: UserOut
+
+
+class NoteOut(BaseModel):
+    id: uuid.UUID
+    title: str
+    text: str
+    created_at: datetime
+    updated_at: datetime
+
+
+class NoteIn(BaseModel):
+    title: str = Field(max_length=200)
+    text: str = ""
+
+    @field_validator("title")
+    @classmethod
+    def title_not_blank(cls, v: str) -> str:
+        if not v.strip():
+            raise ValueError("Title must not be empty")
+        return v
+
+
+class FieldError(BaseModel):
+    field: str
+    message: str
+
+
+class ErrorResponse(BaseModel):
+    """{detail: message} for HTTP errors; validation errors carry a list of FieldError."""
+
+    detail: str | list[FieldError]

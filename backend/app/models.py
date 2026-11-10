@@ -7,7 +7,7 @@ Schema changes go through Alembic migrations (backend/migrations), never through
 import uuid
 from datetime import datetime
 
-from sqlalchemy import CHAR, DateTime, ForeignKey, String, Text, Uuid, func
+from sqlalchemy import CHAR, DateTime, ForeignKey, Index, String, Text, Uuid, desc, func
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.database import Base
@@ -27,6 +27,7 @@ class User(Base):
 
 class Note(Base):
     __tablename__ = "notes"
+    __table_args__ = (Index("ix_notes_user_id_updated_at", "user_id", desc("updated_at")),)
 
     id: Mapped[uuid.UUID] = mapped_column(Uuid, primary_key=True, default=uuid.uuid4)
     user_id: Mapped[uuid.UUID] = mapped_column(
@@ -44,6 +45,7 @@ class Note(Base):
 
 class Session(Base):
     __tablename__ = "sessions"
+    __table_args__ = (Index("ix_sessions_token_hash", "token_hash"),)
 
     id: Mapped[uuid.UUID] = mapped_column(Uuid, primary_key=True, default=uuid.uuid4)
     user_id: Mapped[uuid.UUID] = mapped_column(
@@ -54,7 +56,10 @@ class Session(Base):
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), nullable=False
     )
-    expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    expires_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    last_seen_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), nullable=False
+    )
     revoked_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
 
 

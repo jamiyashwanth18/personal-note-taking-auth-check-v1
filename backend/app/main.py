@@ -9,13 +9,17 @@ OpenAPI document and passes its tests before a single handler is implemented.
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
+from starlette.exceptions import HTTPException as StarletteHTTPException
 
 from app import models  # noqa: F401 -- imported so the tables register before create_all
 from app.config import ALLOWED_ORIGINS
 from app.database import SessionLocal
 from app.migrate import upgrade_to_head
+from app.routers import auth, notes
 from app.seed import seed_bootstrap_admin
 
 
@@ -59,3 +63,26 @@ app.add_middleware(
 async def health() -> dict[str, str]:
     """Liveness probe, and the only route here that is not a stub."""
     return {"status": "ok"}
+
+
+app.include_router(auth.router)
+app.include_router(notes.router)
+
+
+@app.exception_handler(StarletteHTTPException)
+async def http_error(request: Request, exc: StarletteHTTPException) -> JSONResponse:
+    return JSONResponse({"detail": exc.detail}, status_code=exc.status_code, headers=exc.headers)
+
+
+@app.exception_handler(RequestValidationError)
+async def validation_error(request: Request, exc: RequestValidationError) -> JSONResponse:
+    errors = [
+        {"field": ".".join(str(p) for p in e["loc"] if p != "body"), "message": e["msg"]}
+        for e in exc.errors()
+    ]
+    return JSONResponse({"detail": errors}, status_code=422)
+
+
+@app.exception_handler(Exception)
+async def unhandled_error(request: Request, exc: Exception) -> JSONResponse:
+    return JSONResponse({"detail": "Something went wrong"}, status_code=500)

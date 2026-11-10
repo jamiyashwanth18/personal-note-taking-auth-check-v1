@@ -14,7 +14,9 @@ def _split(value: str) -> list[str]:
 
 
 # The SPA's origin(s) for CORS, comma separated.
-ALLOWED_ORIGINS: list[str] = _split(os.getenv("ALLOWED_ORIGINS", "")) or _DEV_ORIGINS
+ALLOWED_ORIGINS: list[str] = _split(
+    os.getenv("CORS_ALLOWED_ORIGINS") or os.getenv("ALLOWED_ORIGINS", "")
+) or _DEV_ORIGINS
 
 # The shared API bearer the generated frontend sends. Public: never sign anything with it.
 SECRET_KEY: str = os.getenv("SECRET_KEY", "dev-shared-api-key")
@@ -29,3 +31,6 @@ MEDIA_ROOT: str = os.getenv("MEDIA_ROOT", "./media")
 # seed nothing then.
 BOOTSTRAP_ADMIN_EMAIL: str = os.getenv("BOOTSTRAP_ADMIN_EMAIL", "")
 BOOTSTRAP_ADMIN_PASSWORD: str = os.getenv("BOOTSTRAP_ADMIN_PASSWORD", "")
+
+# Minutes of inactivity before a session ends.
+SESSION_IDLE_TIMEOUT_MINUTES: int = int(os.getenv("SESSION_IDLE_TIMEOUT_MINUTES", "30"))
