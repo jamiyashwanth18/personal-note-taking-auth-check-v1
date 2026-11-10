@@ -33,9 +33,6 @@ function Shell() {
           <NavLink to="/notes" className={navLinkClass}>
             {"Notes list"}
           </NavLink>
-          <NavLink to="/note-editor" className={navLinkClass}>
-            {"Note editor"}
-          </NavLink>
         </nav>
       </aside>
       <main className="flex-1 overflow-auto">
@@ -58,7 +55,8 @@ export default function App() {
           }
         >
           <Route path="/notes" element={<Notes />} />
-          <Route path="/note-editor" element={<NoteEditor />} />
+          <Route path="/notes/new" element={<NoteEditor />} />
+          <Route path="/notes/:id" element={<NoteEditor />} />
         </Route>
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
