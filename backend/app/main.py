@@ -6,7 +6,6 @@ is a stub that returns a typed placeholder, so the service starts, serves its
 OpenAPI document and passes its tests before a single handler is implemented.
 """
 
-import os
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
 
@@ -14,27 +13,28 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app import models  # noqa: F401 -- imported so the tables register before create_all
-from app.database import Base, engine
+from app.config import ALLOWED_ORIGINS
+from app.database import SessionLocal
+from app.migrate import upgrade_to_head
+from app.seed import seed_bootstrap_admin
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI) -> AsyncIterator[None]:
-    """The scaffold ships no migrations, so the tables are created from the models
-    when the application starts. Replace this with Alembic before anything holds data
-    worth keeping.
+    """Bring the schema up to date with the Alembic migrations, then serve.
 
     This runs on startup and not at import, so importing the application never opens a
-    connection. A test can therefore point `get_db` at a database of its own, and a
-    deployment whose `DATABASE_URL` names a server that is not up fails where you can
-    read the error, not while pytest collects the files.
+    connection and a test can point `get_db` at its own session.
     """
-    Base.metadata.create_all(bind=engine)
+    upgrade_to_head()
+    with SessionLocal() as db:
+        seed_bootstrap_admin(db)
     yield
 
 
 app = FastAPI(
     title="Personal note taking - auth check v1",
-    description="Build a simple Personal Notes app.\n\n- Users sign in with email and password. \n- After signing in, a user sees a list of their notes.\n- A user can create, edit and delete a note (title and text).\n- A user can sign out.\n\nScreens\n- Login\n- Notes list\n- Note editor",
+    description="A simple personal notes app: sign in, then create, edit and delete your notes.",
     version="0.1.0",
     lifespan=lifespan,
 )
@@ -43,14 +43,15 @@ app = FastAPI(
 # unless that origin is allowed here. In development that is the Vite dev server; when
 # deployed, the platform injects the frontend's real URL as ALLOWED_ORIGINS (comma
 # separated). Point ALLOWED_ORIGINS at the real thing and nothing else has to change.
-_dev_origins = ["http://localhost:5173", "http://127.0.0.1:5173"]
-_allowed_origins = [o.strip() for o in os.getenv("ALLOWED_ORIGINS", "").split(",") if o.strip()]
+#
+# Sessions travel as an `Authorization: Bearer` header, never a cookie, so credentials
+# stay off.
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=_allowed_origins or _dev_origins,
-    allow_credentials=True,
+    allow_origins=ALLOWED_ORIGINS,
+    allow_credentials=False,
     allow_methods=["*"],
-    allow_headers=["*"],
+    allow_headers=["Authorization", "Content-Type"],
 )
 
 

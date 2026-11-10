@@ -1,13 +1,7 @@
-"""Test fixtures: one fresh database per test, never the application's own.
+"""Test fixtures: the real PostgreSQL the sandbox runs (`DATABASE_URL`), migrated once.
 
-Without this file every test shares the SQLite file `DATABASE_URL` names, so a row
-one test writes is still there for the next one, and the order the tests run in
-decides whether they pass. Worse, a deployment that points `DATABASE_URL` at
-Postgres makes the suite need a database server to collect at all.
-
-Each test gets an in-memory database of its own. `StaticPool` keeps every session
-on the one connection that memory lives in, and the `get_db` override makes the
-application use it instead of the engine `app.database` built at import.
+The schema is built by the Alembic migrations, exactly as in production. Every test
+starts with empty tables: they are truncated after each test.
 """
 
 from collections.abc import Iterator
@@ -15,35 +9,40 @@ from collections.abc import Iterator
 import pytest
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
+from sqlalchemy.engine import Engine
 from sqlalchemy.orm import Session, sessionmaker
-from sqlalchemy.pool import StaticPool
+from sqlalchemy.pool import NullPool
 
-from app import models  # noqa: F401 -- imported so the tables register before create_all
-from app.database import Base, get_db
+from app import models  # noqa: F401 -- registers the tables on Base.metadata
+from app.database import DATABASE_URL, Base, get_db
 from app.main import app
+from app.migrate import upgrade_to_head
+
+
+@pytest.fixture(scope="session")
+def engine() -> Iterator[Engine]:
+    eng = create_engine(DATABASE_URL, poolclass=NullPool, future=True)
+    upgrade_to_head(eng)
+    yield eng
+    eng.dispose()
 
 
 @pytest.fixture
-def db_session() -> Iterator[Session]:
-    """An empty database, built and thrown away around one test."""
-    engine = create_engine(
-        "sqlite://",
-        connect_args={"check_same_thread": False},
-        poolclass=StaticPool,
-        future=True,
-    )
-    Base.metadata.create_all(bind=engine)
+def db_session(engine: Engine) -> Iterator[Session]:
+    """A session on the migrated database; every table is emptied afterwards."""
     session = sessionmaker(bind=engine, autoflush=False, expire_on_commit=False)()
     try:
         yield session
     finally:
         session.close()
-        engine.dispose()
+        with engine.begin() as conn:
+            for table in reversed(Base.metadata.sorted_tables):
+                conn.execute(table.delete())
 
 
 @pytest.fixture
 def client(db_session: Session) -> Iterator[TestClient]:
-    """The application, talking to this test's database and nothing else."""
+    """The application, talking to this test's session and nothing else."""
 
     def _get_db() -> Iterator[Session]:
         yield db_session
