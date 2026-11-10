@@ -7,7 +7,11 @@ Pushes to `main` run `.github/workflows/deploy.yml`, which builds the API image 
 <!-- sdlc:auto:end how-it-deploys -->
 
 <!-- sdlc:auto:start environments -->
-_No environments recorded._
+| Name | Service | Runtime | Scaling | Environment |
+|---|---|---|---|---|
+| spa_hosting | AWS S3 + CloudFront (SPA origin only) | Static React 19 build | Managed CDN | dev |
+| api_service | AWS App Runner (API origin, separate host) | Python container running FastAPI 0.115 with uvicorn | 1-2 instances, autoscale on concurrency | dev |
+| db | Amazon RDS for PostgreSQL 16 | PostgreSQL 16, db.t4g.micro, encrypted storage | Single-AZ, automated backups | dev |
 <!-- sdlc:auto:end environments -->
 
 <!-- sdlc:auto:start live -->
@@ -15,5 +19,12 @@ _Not deployed yet._
 <!-- sdlc:auto:end live -->
 
 <!-- sdlc:auto:start topology -->
-_No deployment topology recorded._
+```mermaid
+graph LR
+  n_spa_hosting["spa_hosting<br/>AWS S3 + CloudFront (SPA origin only)"]
+  n_api_service["api_service<br/>AWS App Runner (API origin, separate host)"]
+  n_db["db<br/>Amazon RDS for PostgreSQL 16"]
+  n_spa_hosting -->|"HTTPS (browser calls the API origin from VITE_API_BASE_URL, Bearer token)"| n_api_service
+  n_api_service -->|"PostgreSQL over TLS inside the VPC"| n_db
+```
 <!-- sdlc:auto:end topology -->
