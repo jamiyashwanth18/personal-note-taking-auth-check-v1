@@ -2,12 +2,13 @@
 
 Build a simple Personal Notes app.
 
-- Users sign in with email and password. 
+- Users sign in with email and password.
 - After signing in, a user sees a list of their notes.
 - A user can create, edit and delete a note (title and text).
 - A user can sign out.
 
 Screens
+
 - Login
 - Notes list
 - Note editor
