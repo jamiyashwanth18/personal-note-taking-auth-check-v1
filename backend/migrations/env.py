@@ -1,11 +1,17 @@
 """Alembic environment: online migrations against DATABASE_URL."""
 
+import sys
+from pathlib import Path
+
 from alembic import context
 from sqlalchemy import pool
 from sqlalchemy.engine import Engine, create_engine
 
-from app import models  # noqa: F401 -- registers the tables on Base.metadata
-from app.database import DATABASE_URL, Base
+# The alembic CLI does not put backend/ on sys.path; `import app` needs it.
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+from app import models  # noqa: E402, F401 -- registers the tables on Base.metadata
+from app.database import DATABASE_URL, Base  # noqa: E402
 
 target_metadata = Base.metadata
 
