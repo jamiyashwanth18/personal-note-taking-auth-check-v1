@@ -83,7 +83,7 @@ describe("Notes", () => {
     expect(calls.some((c) => c.url.endsWith("/notes/1") && c.method === "GET")).toBe(true);
   });
 
-  it("[AC-017] creates a note via POST and returns to the list", async () => {
+  it("[AC-017] creates a note via POST and shows the Saved status", async () => {
     const calls = mockApi((c) =>
       c.method === "POST"
         ? { status: 201, body: note("9", "T") }
@@ -93,7 +93,7 @@ describe("Notes", () => {
     fireEvent.change(await screen.findByLabelText("Title"), { target: { value: "T" } });
     fireEvent.change(screen.getByLabelText("Text"), { target: { value: "body" } });
     fireEvent.click(screen.getByRole("button", { name: /Save note/ }));
-    expect(await screen.findByRole("heading", { name: "Notes" })).toBeInTheDocument();
+    expect(await screen.findByText(/^Saved/)).toBeInTheDocument();
     const post = calls.find((c) => c.method === "POST");
     expect(JSON.parse(post!.body!)).toEqual({ title: "T", text: "body" });
   });

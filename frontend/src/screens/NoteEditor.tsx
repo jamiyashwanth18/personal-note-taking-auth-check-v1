@@ -39,7 +39,6 @@ const label: React.CSSProperties = {
   fontSize: 11,
   fontWeight: 700,
   letterSpacing: "0.08em",
-  textTransform: "uppercase",
   marginBottom: 8,
 };
 const field: React.CSSProperties = {
@@ -116,8 +115,10 @@ export default function Screen() {
     try {
       const payload = JSON.stringify({ title, text: body });
       if (isNew) {
-        await apiFetch<Note>("/notes", { method: "POST", body: payload });
-        navigate("/notes");
+        const created = await apiFetch<Note>("/notes", { method: "POST", body: payload });
+        setNote(created);
+        setSaved(true);
+        navigate("/notes/" + created.id);
         return;
       }
       const n = await apiFetch<Note>("/notes/" + encodeURIComponent(id), {
