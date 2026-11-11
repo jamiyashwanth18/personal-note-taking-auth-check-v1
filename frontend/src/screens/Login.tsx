@@ -53,12 +53,12 @@ export default function Screen() {
       className="flex min-h-screen flex-col bg-white"
       style={{ color: brand.primaryColor, fontFamily: brand.fontBody }}
     >
-      <header className="px-10 py-5" style={{ borderBottom: rule }}>
+      <header className="px-4 py-5 sm:px-10" style={{ borderBottom: rule }}>
         <p className="text-lg font-bold tracking-tight" style={{ fontFamily: brand.fontHeading }}>
           {PRODUCT}
         </p>
       </header>
-      <main className="flex w-full max-w-md flex-col justify-center px-10 py-12">
+      <main className="flex w-full max-w-md flex-col justify-center px-4 py-12 sm:px-10">
         <h1 className="text-4xl font-bold tracking-tight" style={{ fontFamily: brand.fontHeading }}>
           {signUp ? "Create account" : "Login"}
         </h1>
@@ -127,7 +127,7 @@ export default function Screen() {
           </button>
           <button
             type="button"
-            className="text-sm font-bold underline"
+            className="min-h-[44px] text-sm font-bold underline"
             onClick={() => {
               setSignUp(!signUp);
               setErrors({});

@@ -5,7 +5,7 @@ import { apiFetch } from "@/lib/api";
 import { useAuth } from "@/lib/auth";
 import { brand } from "@/lib/brand";
 import { Icons } from "@/lib/icons";
-import { Avatar, Empty, TBody, TD, TH, THead, TR, Table } from "@/lib/ui";
+import { Avatar, Empty } from "@/lib/ui";
 
 export type Note = {
   id: string;
@@ -101,7 +101,7 @@ export default function Screen() {
                 <div style={{ ...label, color: brand.neutralColor, fontSize: 10 }}>
                   Signed in as
                 </div>
-                <div style={{ fontWeight: 700 }}>{user?.email}</div>
+                <div style={{ fontWeight: 700, overflowWrap: "anywhere" }}>{user?.email}</div>
               </div>
             </div>
             <button
@@ -153,48 +153,47 @@ export default function Screen() {
         )}
 
         {status === "ready" && notes.length > 0 && (
-          <Table>
-            <THead>
-              <TR>
-                <TH scope="col">Title</TH>
-                <TH scope="col">Preview</TH>
-                <TH scope="col">Updated</TH>
-              </TR>
-            </THead>
-            <TBody>
-              {notes.map((n) => (
-                <TR key={n.id}>
-                  <TD style={{ maxWidth: 320 }}>
-                    <button
-                      type="button"
-                      style={{
-                        background: "none",
-                        border: 0,
-                        padding: 0,
-                        font: "inherit",
-                        fontWeight: 700,
-                        textAlign: "left",
-                        cursor: "pointer",
-                      }}
-                      onClick={() => navigate("/notes/" + n.id)}
-                    >
-                      {n.title}
-                    </button>
-                  </TD>
-                  <TD style={{ maxWidth: 420, color: brand.neutralColor }}>
-                    <div
-                      style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}
-                    >
-                      {n.text}
-                    </div>
-                  </TD>
-                  <TD style={{ whiteSpace: "nowrap" }}>
-                    <time dateTime={n.updated_at}>{fmt(n.updated_at)}</time>
-                  </TD>
-                </TR>
-              ))}
-            </TBody>
-          </Table>
+          <ul data-testid="notes-list" className="m-0 list-none p-0">
+            {notes.map((n) => (
+              <li
+                key={n.id}
+                className="grid min-w-0 gap-1 py-2"
+                style={{ borderBottom: "1px solid " + brand.neutralColor + "33" }}
+              >
+                <button
+                  type="button"
+                  className="w-full"
+                  style={{
+                    background: "none",
+                    border: 0,
+                    padding: 0,
+                    minHeight: 44,
+                    font: "inherit",
+                    fontWeight: 700,
+                    textAlign: "left",
+                    cursor: "pointer",
+                    overflowWrap: "anywhere",
+                  }}
+                  onClick={() => navigate("/notes/" + n.id)}
+                >
+                  {n.title}
+                </button>
+                <div
+                  style={{
+                    color: brand.neutralColor,
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {n.text}
+                </div>
+                <time dateTime={n.updated_at} style={{ fontSize: 13 }}>
+                  {fmt(n.updated_at)}
+                </time>
+              </li>
+            ))}
+          </ul>
         )}
       </div>
     </div>

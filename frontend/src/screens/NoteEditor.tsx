@@ -18,6 +18,8 @@ const btn: React.CSSProperties = {
   justifyContent: "center",
   gap: 8,
   minHeight: 44,
+  maxWidth: "100%",
+  overflowWrap: "anywhere",
   padding: "0 16px",
   border: rule,
   borderRadius: brand.radius,
