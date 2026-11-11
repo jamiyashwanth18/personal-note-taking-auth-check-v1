@@ -1,9 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 test.describe("Setup guide outcome: the started app reaches Login", () => {
-  test("[AC-040] a fresh visitor of the running app reaches the Login screen", async ({
-    page,
-  }) => {
+  test("[AC-040] a fresh visitor of the running app reaches the Login screen", async ({ page }) => {
     await page.goto("/");
     await expect(page).toHaveURL(/\/login/);
     await expect(page.getByLabel("Email")).toBeVisible();
