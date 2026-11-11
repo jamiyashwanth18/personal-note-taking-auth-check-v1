@@ -3,9 +3,9 @@
 > Maintained by QuorQ AI SDLC. Text between `sdlc:auto` markers is regenerated; anything outside them is yours and is kept.
 
 <!-- sdlc:auto:start summary -->
-147 tests · Passed 94 · Failed 17 · Skipped 0 · Not run 36
+147 tests · Passed 130 · Failed 17 · Skipped 0 · Not run 0
 
-Acceptance criteria covered: 32/41 · passing: 18/41
+Acceptance criteria covered: 32/41 · passing: 30/41
 <!-- sdlc:auto:end summary -->
 
 <!-- sdlc:auto:start tests -->
@@ -98,13 +98,13 @@ Acceptance criteria covered: 32/41 · passing: 18/41
 | — | test_get_note_returns_the_documented_shape | Integration | Passed | `backend/tests/test_note_edit_api.py` |
 | — | test_put_other_users_note_is_404_and_does_not_change_it | Integration | Passed | `backend/tests/test_note_edit_api.py` |
 | — | test_put_unknown_note_is_404_with_detail | Integration | Passed | `backend/tests/test_note_edit_api.py` |
-| AC-020 | [AC-020] GET and PUT /notes/{id} without a token are 401 | E2E | Not run yet | `frontend/e2e/edit-note.spec.ts` |
-| AC-020 | [AC-020] GET and PUT on another user's or a missing note are 404 'Note not found' | E2E | Not run yet | `frontend/e2e/edit-note.spec.ts` |
-| AC-020 | [AC-020] PUT /notes/{id} returns 200 with the updated note and a later updated_at | E2E | Not run yet | `frontend/e2e/edit-note.spec.ts` |
-| AC-020 | [AC-020] user edits title and text, saves, and reopening shows the new content | E2E | Not run yet | `frontend/e2e/edit-note.spec.ts` |
-| AC-021 | [AC-021] PUT with an empty, blank or missing title is 422 and leaves the note unchanged | E2E | Not run yet | `frontend/e2e/edit-note.spec.ts` |
-| AC-021 | [AC-021] clearing the title blocks saving with a message and the stored note is unchanged | E2E | Not run yet | `frontend/e2e/edit-note.spec.ts` |
-| AC-022 | [AC-022] a failed save shows an error and the entered text stays in the editor | E2E | Not run yet | `frontend/e2e/edit-note.spec.ts` |
+| AC-020 | [AC-020] GET and PUT /notes/{id} without a token are 401 | E2E | Passed | `frontend/e2e/edit-note.spec.ts` |
+| AC-020 | [AC-020] GET and PUT on another user's or a missing note are 404 'Note not found' | E2E | Passed | `frontend/e2e/edit-note.spec.ts` |
+| AC-020 | [AC-020] PUT /notes/{id} returns 200 with the updated note and a later updated_at | E2E | Passed | `frontend/e2e/edit-note.spec.ts` |
+| AC-020 | [AC-020] user edits title and text, saves, and reopening shows the new content | E2E | Passed | `frontend/e2e/edit-note.spec.ts` |
+| AC-021 | [AC-021] PUT with an empty, blank or missing title is 422 and leaves the note unchanged | E2E | Passed | `frontend/e2e/edit-note.spec.ts` |
+| AC-021 | [AC-021] clearing the title blocks saving with a message and the stored note is unchanged | E2E | Passed | `frontend/e2e/edit-note.spec.ts` |
+| AC-022 | [AC-022] a failed save shows an error and the entered text stays in the editor | E2E | Passed | `frontend/e2e/edit-note.spec.ts` |
 
 ### US-009: Notes are visible only to their owner
 
@@ -124,13 +124,13 @@ Acceptance criteria covered: 32/41 · passing: 18/41
 | AC-028 | test_ac028_non_bearer_header_is_401_on_every_notes_endpoint[post-/notes-kw1] | Integration | Passed | `backend/tests/test_notes_privacy_api.py` |
 | AC-028 | test_ac028_non_bearer_header_is_401_on_every_notes_endpoint[put-/notes/00000000-0000-0000-0000-0000000000aa-kw3] | Integration | Passed | `backend/tests/test_notes_privacy_api.py` |
 | AC-028 | test_ac028_signed_out_token_is_rejected_and_reveals_no_notes | Integration | Passed | `backend/tests/test_notes_privacy_api.py` |
-| AC-026 | [AC-026] A's Notes list shows only A's notes | E2E | Not run yet | `frontend/e2e/note-privacy.spec.ts` |
-| AC-026 | [AC-026] the list API returns only the caller's notes | E2E | Not run yet | `frontend/e2e/note-privacy.spec.ts` |
-| AC-027 | [AC-027] B opening A's note by URL sees not-found and none of its content | E2E | Not run yet | `frontend/e2e/note-privacy.spec.ts` |
-| AC-027 | [AC-027] B's GET, PUT and DELETE on A's note are refused as 404 and change nothing | E2E | Not run yet | `frontend/e2e/note-privacy.spec.ts` |
-| AC-028 | [AC-028] a signed-out visitor opening the notes screen is sent to sign-in | E2E | Not run yet | `frontend/e2e/note-privacy.spec.ts` |
-| AC-028 | [AC-028] after signing out, the old token is rejected by the API | E2E | Not run yet | `frontend/e2e/note-privacy.spec.ts` |
-| AC-028 | [AC-028] every notes endpoint rejects a request without sign-in as 401 | E2E | Not run yet | `frontend/e2e/note-privacy.spec.ts` |
+| AC-026 | [AC-026] A's Notes list shows only A's notes | E2E | Passed | `frontend/e2e/note-privacy.spec.ts` |
+| AC-026 | [AC-026] the list API returns only the caller's notes | E2E | Passed | `frontend/e2e/note-privacy.spec.ts` |
+| AC-027 | [AC-027] B opening A's note by URL sees not-found and none of its content | E2E | Passed | `frontend/e2e/note-privacy.spec.ts` |
+| AC-027 | [AC-027] B's GET, PUT and DELETE on A's note are refused as 404 and change nothing | E2E | Passed | `frontend/e2e/note-privacy.spec.ts` |
+| AC-028 | [AC-028] a signed-out visitor opening the notes screen is sent to sign-in | E2E | Passed | `frontend/e2e/note-privacy.spec.ts` |
+| AC-028 | [AC-028] after signing out, the old token is rejected by the API | E2E | Passed | `frontend/e2e/note-privacy.spec.ts` |
+| AC-028 | [AC-028] every notes endpoint rejects a request without sign-in as 401 | E2E | Passed | `frontend/e2e/note-privacy.spec.ts` |
 
 ### US-010: No sharing or discovery features
 
@@ -142,22 +142,22 @@ Acceptance criteria covered: 32/41 · passing: 18/41
 | AC-029 | test_ac029_sharing_and_search_urls_do_not_exist | Integration | Passed | `backend/tests/test_no_sharing_api.py` |
 | AC-029 | test_ac029_tag_and_share_fields_are_not_stored_or_returned | Integration | Passed | `backend/tests/test_no_sharing_api.py` |
 | AC-029 | test_ac029_text_is_stored_verbatim_as_plain_text | Integration | Passed | `backend/tests/test_no_sharing_api.py` |
-| AC-029 | [AC-029] API exposes no share, tag, search or collaborator endpoints | E2E | Not run yet | `frontend/e2e/no-sharing.spec.ts` |
-| AC-029 | [AC-029] Note editor is a plain title and text form with no sharing, tag or format controls | E2E | Not run yet | `frontend/e2e/no-sharing.spec.ts` |
-| AC-029 | [AC-029] Notes list offers no share, tag or search controls | E2E | Not run yet | `frontend/e2e/no-sharing.spec.ts` |
-| AC-029 | [AC-029] formatting characters are saved and shown as plain text | E2E | Not run yet | `frontend/e2e/no-sharing.spec.ts` |
-| AC-029 | [AC-029] list ignores search parameters and notes carry no tag or share fields | E2E | Not run yet | `frontend/e2e/no-sharing.spec.ts` |
+| AC-029 | [AC-029] API exposes no share, tag, search or collaborator endpoints | E2E | Passed | `frontend/e2e/no-sharing.spec.ts` |
+| AC-029 | [AC-029] Note editor is a plain title and text form with no sharing, tag or format controls | E2E | Passed | `frontend/e2e/no-sharing.spec.ts` |
+| AC-029 | [AC-029] Notes list offers no share, tag or search controls | E2E | Passed | `frontend/e2e/no-sharing.spec.ts` |
+| AC-029 | [AC-029] formatting characters are saved and shown as plain text | E2E | Passed | `frontend/e2e/no-sharing.spec.ts` |
+| AC-029 | [AC-029] list ignores search parameters and notes carry no tag or share fields | E2E | Passed | `frontend/e2e/no-sharing.spec.ts` |
 
 ### US-011: Use the app on phone and desktop
 
 | Criteria | Test | Level | Result | File |
 |---|---|---|---|---|
 | AC-030 | Responsive layout > [AC-030] stacks the menu on narrow screens, beside content from md up, notes as a list | Unit | Passed | `frontend/src/Responsive.test.tsx` |
-| AC-030 | [AC-030] Login: no horizontal scroll, sign in and sign up controls usable | E2E | Not run yet | `frontend/e2e/responsive.spec.ts` |
-| AC-030 | [AC-030][NFR-013] Note editor: Save, Close, Delete, Sign out usable | E2E | Not run yet | `frontend/e2e/responsive.spec.ts` |
-| AC-030 | [AC-030][NFR-013] Notes list with several notes and a long title | E2E | Not run yet | `frontend/e2e/responsive.spec.ts` |
-| AC-031 | [AC-031] Notes list and editor stay within a sensible width | E2E | Not run yet | `frontend/e2e/responsive.spec.ts` |
-| AC-031 | [AC-031][NFR-013] Login is readable and not stretched | E2E | Not run yet | `frontend/e2e/responsive.spec.ts` |
+| AC-030 | [AC-030] Login: no horizontal scroll, sign in and sign up controls usable | E2E | Passed | `frontend/e2e/responsive.spec.ts` |
+| AC-030 | [AC-030][NFR-013] Note editor: Save, Close, Delete, Sign out usable | E2E | Passed | `frontend/e2e/responsive.spec.ts` |
+| AC-030 | [AC-030][NFR-013] Notes list with several notes and a long title | E2E | Passed | `frontend/e2e/responsive.spec.ts` |
+| AC-031 | [AC-031] Notes list and editor stay within a sensible width | E2E | Passed | `frontend/e2e/responsive.spec.ts` |
+| AC-031 | [AC-031][NFR-013] Login is readable and not stretched | E2E | Passed | `frontend/e2e/responsive.spec.ts` |
 
 ### US-015: Basic setup and usage guide
 
@@ -183,8 +183,8 @@ Acceptance criteria covered: 32/41 · passing: 18/41
 | AC-041 | test_ac041_usage_lists_v1_limits[social login] | Unit | Failed | `backend/tests/test_setup_docs.py` |
 | AC-041 | test_ac041_usage_lists_v1_limits[tags] | Unit | Failed | `backend/tests/test_setup_docs.py` |
 | — | test_nfr016_documentation_is_short | Unit | Passed | `backend/tests/test_setup_docs.py` |
-| AC-040 | [AC-040] a fresh visitor of the running app reaches the Login screen | E2E | Not run yet | `frontend/e2e/setup-guide.spec.ts` |
-| AC-040 | [AC-040] the backend the guide starts answers its health check | E2E | Not run yet | `frontend/e2e/setup-guide.spec.ts` |
+| AC-040 | [AC-040] a fresh visitor of the running app reaches the Login screen | E2E | Passed | `frontend/e2e/setup-guide.spec.ts` |
+| AC-040 | [AC-040] the backend the guide starts answers its health check | E2E | Passed | `frontend/e2e/setup-guide.spec.ts` |
 
 ## Project setup
 
@@ -195,15 +195,15 @@ Acceptance criteria covered: 32/41 · passing: 18/41
 | — | App > opens on Login, with no menu around it | Unit | Passed | `frontend/src/App.test.tsx` |
 | — | test_health_reports_ok | Integration | Passed | `backend/tests/test_health.py` |
 | — | test_the_openapi_document_builds | Integration | Passed | `backend/tests/test_health.py` |
-| AC-023 | [AC-023] choosing Delete shows a confirmation and the note still exists | E2E | Not run yet | `frontend/e2e/delete-note.spec.ts` |
-| AC-024 | [AC-024] confirming deletes the note; it is gone from the list, also after reload | E2E | Not run yet | `frontend/e2e/delete-note.spec.ts` |
-| AC-025 | [AC-025] cancelling keeps the note unchanged | E2E | Not run yet | `frontend/e2e/delete-note.spec.ts` |
+| AC-023 | [AC-023] choosing Delete shows a confirmation and the note still exists | E2E | Passed | `frontend/e2e/delete-note.spec.ts` |
+| AC-024 | [AC-024] confirming deletes the note; it is gone from the list, also after reload | E2E | Passed | `frontend/e2e/delete-note.spec.ts` |
+| AC-025 | [AC-025] cancelling keeps the note unchanged | E2E | Passed | `frontend/e2e/delete-note.spec.ts` |
 | — | the app loads | E2E | Passed | `frontend/e2e/example.spec.ts` |
-| AC-029 | [AC-029] HTML typed into a note is stored and shown as plain text, not rendered | E2E | Not run yet | `frontend/e2e/no-sharing-v1.spec.ts` |
-| AC-029 | [AC-029] Login screen has no share, tag, search or formatting controls | E2E | Not run yet | `frontend/e2e/no-sharing-v1.spec.ts` |
-| AC-029 | [AC-029] OpenAPI lists no share, tag or search routes and GET /notes has no filter parameter | E2E | Not run yet | `frontend/e2e/no-sharing-v1.spec.ts` |
-| AC-029 | [AC-029] q and tag query parameters do not change the GET /notes result | E2E | Not run yet | `frontend/e2e/no-sharing-v1.spec.ts` |
-| AC-029 | [AC-029] the note text field is a plain textarea and there is no toolbar | E2E | Not run yet | `frontend/e2e/no-sharing-v1.spec.ts` |
-| AC-028 | [AC-028] invalid and revoked tokens get 401 on every notes endpoint | E2E | Not run yet | `frontend/e2e/note-privacy-auth.spec.ts` |
-| — | [NFR-005] refusal of another user's note uses the {detail} shape without content | E2E | Not run yet | `frontend/e2e/note-privacy-auth.spec.ts` |
+| AC-029 | [AC-029] HTML typed into a note is stored and shown as plain text, not rendered | E2E | Passed | `frontend/e2e/no-sharing-v1.spec.ts` |
+| AC-029 | [AC-029] Login screen has no share, tag, search or formatting controls | E2E | Passed | `frontend/e2e/no-sharing-v1.spec.ts` |
+| AC-029 | [AC-029] OpenAPI lists no share, tag or search routes and GET /notes has no filter parameter | E2E | Passed | `frontend/e2e/no-sharing-v1.spec.ts` |
+| AC-029 | [AC-029] q and tag query parameters do not change the GET /notes result | E2E | Passed | `frontend/e2e/no-sharing-v1.spec.ts` |
+| AC-029 | [AC-029] the note text field is a plain textarea and there is no toolbar | E2E | Passed | `frontend/e2e/no-sharing-v1.spec.ts` |
+| AC-028 | [AC-028] invalid and revoked tokens get 401 on every notes endpoint | E2E | Passed | `frontend/e2e/note-privacy-auth.spec.ts` |
+| — | [NFR-005] refusal of another user's note uses the {detail} shape without content | E2E | Passed | `frontend/e2e/note-privacy-auth.spec.ts` |
 <!-- sdlc:auto:end tests -->

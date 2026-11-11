@@ -3,51 +3,108 @@
 > Maintained by QuorQ AI SDLC. Text between `sdlc:auto` markers is regenerated; anything outside them is yours and is kept.
 
 <!-- sdlc:auto:start narrative -->
-### TEST-CHECKS-01 · draft · source: testing:run_checks
+### TEST-RUN-CHECKS · draft · source: testing:run_checks
 
-An automated checks run completed successfully, with 7 of 7 checks passing. The run was not tied to a specific ticket.
+The aggregate project check run failed, with 6 of 8 checks passing. It was not tied to a specific ticket. The input does not name the failing checks.
 
-- Activity: run_checks
-- Ticket: none (project-level run)
+- Step: run_checks (ticket: none)
+- Status: failed
+- Result: 6/8 checks passed (2 failed)
+- Failing check names and failure reasons: not provided in input
+- Possible tension with the latest E2E run (41/41 passed, sandbox). See TEST-E2E-LATEST. Both results are recorded as given. The input does not say whether the two failing checks are E2E-related or something else (e.g. lint, unit tests, build).
+- Root cause, remediation and owner: not provided in input
+
+**Related:** TEST-E2E-LATEST, TEST-OPEN-ISSUES
+
+### TEST-c38cbfeb · draft · source: testing:write_tests:c38cbfeb-b33a-4e99-b09d-c7ded3ab817d
+
+Tests were added at three levels (frontend unit, backend API and browser E2E) for acceptance criteria AC-020, AC-021 and AC-022. They cover the note editor and the GET/PUT /notes/{id} endpoints. All are reported passing locally.
+
+- Ticket: c38cbfeb-b33a-4e99-b09d-c7ded3ab817d
 - Status: succeeded
-- Result: 7/7 checks passed
-- Not stated in input: which checks were run (e.g. lint, type-check, unit tests), when they ran, and who triggered them.
-- No requirement linkage given, so related_ids is left empty.
+- Acceptance criteria covered: AC-020, AC-021, AC-022
+- Tests added:
+  - Vitest: note editor component tests (frontend)
+  - pytest: GET /notes/{id} and PUT /notes/{id} (backend API)
+  - Playwright: 3 browser flows + 4 API-contract specs (7 specs total)
+- Result: all pass locally, including the 7 Playwright specs run against the booted app
+- Environment: local (not stated to have run in CI)
+- AC-to-user-story (US-xxx) mapping: not provided in input
 
-### TEST-WRITE-554fe677 · draft · source: testing:write_tests:554fe677-fd5f-41f2-bf5d-c331cb5f6128
+**Related:** c38cbfeb-b33a-4e99-b09d-c7ded3ab817d, AC-020, AC-021, AC-022
 
-Tests were written for ticket 554fe677-fd5f-41f2-bf5d-c331cb5f6128. The step succeeded and produced 2 test files.
+### TEST-ef6637d5 · draft · source: testing:write_tests:ef6637d5-4073-421a-980a-cc788bbf67e6
 
-- Activity: write_tests
-- Ticket: 554fe677-fd5f-41f2-bf5d-c331cb5f6128
+Note-privacy tests were added at the API and UI levels for AC-026, AC-027 and AC-028. The pytest suite passes against real PostgreSQL. The Playwright spec passes only when ALLOWED_ORIGINS is set to the preview origin.
+
+- Ticket: ef6637d5-4073-421a-980a-cc788bbf67e6
 - Status: succeeded
-- Output: 2 test file(s)
-- Not stated in input: file names, what behavior the tests cover, and which user stories (US-xxx) this ticket implements.
-- The ticket-to-requirement mapping is unknown, so only the ticket id is linked.
+- Acceptance criteria covered: AC-026, AC-027, AC-028 (note privacy)
+- Files added:
+  - backend/tests/test_notes_privacy_api.py: 14 pytest cases
+  - frontend/e2e/note-privacy.spec.ts: 7 Playwright tests
+- Results:
+  - pytest: passes against a real PostgreSQL database
+  - Playwright: passes when ALLOWED_ORIGINS=http://localhost:4173 is set
+- Caveat: the E2E pass depends on a CORS/allowed-origins environment setting. Whether CI and the sandbox set this is not stated in input.
+- AC-to-user-story (US-xxx) mapping: not provided in input
 
-**Related:** 554fe677-fd5f-41f2-bf5d-c331cb5f6128
+**Related:** ef6637d5-4073-421a-980a-cc788bbf67e6, AC-026, AC-027, AC-028
 
-### TEST-WRITE-1829f09c · draft · source: testing:write_tests:1829f09c-2dba-4ea5-a412-7a167a64095d
+### TEST-17e1d5cd · draft · source: testing:write_tests:17e1d5cd-ea27-4bbf-ac99-362e8b6dd990
 
-Tests were written for ticket 1829f09c-2dba-4ea5-a412-7a167a64095d. The step succeeded and produced 2 test files.
+Backend tests and Playwright specs were added for AC-029, which confirms the out-of-scope features (sharing, tags, search, rich text) are absent. The backend tests and lint/spec-listing checks pass. The Playwright specs were listed but not executed.
 
-- Activity: write_tests
-- Ticket: 1829f09c-2dba-4ea5-a412-7a167a64095d
+- Ticket: 17e1d5cd-ea27-4bbf-ac99-362e8b6dd990
+- Status: succeeded (task-level)
+- Acceptance criterion covered: AC-029 (no sharing, tags, search or rich text)
+- Files added: test_no_sharing_api.py (backend) plus Playwright specs (file names not given)
+- Results:
+  - test_no_sharing_api.py: passes
+  - frontend-lint: passes
+  - frontend-e2e-specs: passes (specs listed only)
+- Gap: the Playwright specs for AC-029 were not executed by this task. They were only enumerated.
+- Whether the later 41/41 E2E run (TEST-E2E-LATEST) included these specs: not stated in input
+- AC-to-user-story (US-xxx) mapping: not provided in input
+
+**Related:** 17e1d5cd-ea27-4bbf-ac99-362e8b6dd990, AC-029
+
+### TEST-59fe9b64 · draft · source: testing:write_tests:59fe9b64-826e-4663-bdf4-2fca9fba60df
+
+A write_tests task succeeded and reported adding 2 test files. The input gives no information on what these tests cover or whether they pass.
+
+- Ticket: 59fe9b64-826e-4663-bdf4-2fca9fba60df
 - Status: succeeded
-- Output: 2 test file(s)
-- Not stated in input: file names, what behavior the tests cover, and which user stories (US-xxx) this ticket implements.
-- The ticket-to-requirement mapping is unknown, so only the ticket id is linked.
+- Reported detail: "2 test file(s)"
+- Not provided in input: file names, test framework, acceptance criteria covered, pass/fail results
+- Traceability: cannot be linked to any AC or US id from the given input
 
-**Related:** 1829f09c-2dba-4ea5-a412-7a167a64095d
+**Related:** 59fe9b64-826e-4663-bdf4-2fca9fba60df
 
-### TEST-E2E-LATEST · draft · source: testing:e2e-latest
+### TEST-E2E-LATEST · draft · source: testing:latest_e2e_run
 
-The latest end-to-end test run passed, with 1 of 1 scenarios passing against the sandbox target.
+The most recent end-to-end test run against the sandbox target passed all 41 tests.
 
-- Activity: end-to-end (E2E) run, latest
-- Target environment: sandbox
-- Result: passed, 1/1 passed
-- Not stated in input: which user flow the single scenario exercises (e.g. login, notes list, note create/edit/delete, sign out), the run date, and the trigger.
-- Coverage gap to note: only 1 E2E scenario is reported. The input does not show whether all three screens (Login, Notes list, Note editor) are covered end to end.
-- No requirement linkage given, so related_ids is left empty.
+- Target: sandbox
+- Result: passed, 41/41
+- Not provided in input: the list of specs included and the run date
+- The input does not confirm whether this run included the AC-029 Playwright specs, which TEST-17e1d5cd only listed, or whether ALLOWED_ORIGINS was configured for the note-privacy spec (TEST-ef6637d5).
+- Context: the aggregate run_checks step still reports failed (6/8). See TEST-RUN-CHECKS. Both results are recorded without reconciliation.
+
+**Related:** TEST-RUN-CHECKS, TEST-c38cbfeb, TEST-ef6637d5, TEST-17e1d5cd
+
+### TEST-OPEN-ISSUES · draft · source: testing:run_checks; testing:write_tests
+
+This entry consolidates unresolved items from the testing phase inputs. They should be resolved or confirmed before the phase is treated as complete.
+
+- run_checks failed (6/8). The 2 failing checks are unidentified (TEST-RUN-CHECKS).
+- AC-029 Playwright specs were not executed by their authoring task (TEST-17e1d5cd).
+- The note-privacy E2E spec requires ALLOWED_ORIGINS=http://localhost:4173. Environment parity is unconfirmed (TEST-ef6637d5).
+- Ticket 59fe9b64 has no coverage or result details (TEST-59fe9b64).
+- c38cbfeb results are local-only per the input (TEST-c38cbfeb).
+- Test coverage is expressed in AC ids (AC-020 to AC-022, AC-026 to AC-029). No AC-to-US mapping was given, so US-001 to US-015 coverage cannot be traced from this input.
+- ACs not referenced by any testing input (e.g. AC-001 to AC-019, AC-023 to AC-025, if they exist) have no recorded test evidence here.
+- No test sign-off or approval was provided.
+
+**Related:** TEST-RUN-CHECKS, TEST-E2E-LATEST, TEST-ef6637d5, TEST-17e1d5cd, TEST-59fe9b64
 <!-- sdlc:auto:end narrative -->
