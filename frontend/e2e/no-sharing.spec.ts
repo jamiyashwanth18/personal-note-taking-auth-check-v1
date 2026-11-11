@@ -25,7 +25,8 @@ async function signIn(page: Page, a: Account) {
   await expect(page.getByRole("heading", { name: "Notes", exact: true })).toBeVisible();
 }
 
-const FORBIDDEN_UI = /share|sharing|collaborat|invite|\btags?\b|search|bold|italic|markdown|rich text/i;
+const FORBIDDEN_UI =
+  /share|sharing|collaborat|invite|\btags?\b|search|bold|italic|markdown|rich text/i;
 
 test.describe("No sharing, tags, search or rich text", () => {
   test("[AC-029] Notes list offers no share, tag or search controls", async ({ page, request }) => {
