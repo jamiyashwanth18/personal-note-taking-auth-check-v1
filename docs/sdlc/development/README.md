@@ -3,185 +3,178 @@
 > Maintained by QuorQ AI SDLC. Text between `sdlc:auto` markers is regenerated; anything outside them is yours and is kept.
 
 <!-- sdlc:auto:start narrative -->
-### DEV-PLAN-V1 · approved · source: plan:v1
+### DEV-PLAN-V1 · approved · source: plan:version-1
 
-The development plan is approved at version 1. It has three sprints of 20 capacity each, six epics, fifteen stories and three tasks.
+Approved development plan, version 1. It has 3 sprints of capacity 20 each, 6 epics, 15 stories and 3 backend tasks. Total story points across the 15 stories are 49.
 
-- Plan status: approved, version 1.
-- Sprints: Sprint 1, Sprint 2, Sprint 3, each with capacity 20 (total 60).
-- Epics: EPIC-001 to EPIC-006. Epics have no points and no assigned role.
-- Stories: US-001 to US-015, totalling 49 points (sum of the listed story points).
-- Tasks: US-012-T1, US-012-T2, US-012-T3. These have no points.
-- Roles assigned: frontend-agent, backend-agent, security-agent, qa-agent, devops-agent.
-- Not stated in input: approver, approval date, explicit story-to-sprint mapping.
+- Plan status: approved, version 1. Approver and approval date were not provided.
+- EPIC-001 Accounts and sign-in (unassigned):
+  - US-001 Register from the Login screen (5 pts, frontend-agent)
+  - US-002 Sign in with email and password (5 pts, frontend-agent)
+  - US-003 Sign out (2 pts, frontend-agent)
+  - US-004 Session and password security (5 pts, security-agent)
+- EPIC-002 Notes list and note management (unassigned):
+  - US-005 View my notes list (3 pts, frontend-agent)
+  - US-006 Create a note (3 pts, frontend-agent)
+  - US-007 Edit a note (3 pts, frontend-agent)
+  - US-008 Delete a note with confirmation (2 pts, frontend-agent)
+- EPIC-003 Privacy and per-user isolation (unassigned):
+  - US-009 Notes are visible only to their owner (3 pts, qa-agent)
+  - US-010 No sharing or discovery features (1 pt, qa-agent)
+- EPIC-004 Responsive web interface (unassigned):
+  - US-011 Use the app on phone and desktop (3 pts, frontend-agent)
+- EPIC-005 Notes and accounts API and storage (unassigned):
+  - US-012 Accounts and notes API (8 pts, backend-agent)
+    - US-012-T1 Scaffold API app with CORS, error handler and health check (backend-agent)
+    - US-012-T2 Implement user-scoped notes CRUD endpoints (backend-agent)
+    - US-012-T3 Add API integration test suite (qa-agent)
+  - US-013 Persist users and notes in PostgreSQL (3 pts, backend-agent)
+  - US-014 No external services needed (1 pt, devops-agent)
+- EPIC-006 Setup and usage documentation (unassigned):
+  - US-015 Basic setup and usage guide (2 pts, devops-agent)
 
-**Related:** DEV-SPRINT-1, DEV-SPRINT-2, DEV-SPRINT-3, EPIC-001, EPIC-002, EPIC-003, EPIC-004, EPIC-005, EPIC-006
+**Related:** EPIC-001, EPIC-002, EPIC-003, EPIC-004, EPIC-005, EPIC-006, US-001, US-002, US-003, US-004, US-005, US-006, US-007, US-008, US-009, US-010, US-011, US-012, US-013, US-014, US-015
 
-### DEV-SPRINT-1 · approved · source: plan:SPRINT-1
+### SPRINT-1 · approved · source: plan:SPRINT-1
 
-Sprint 1 targets the backend foundation, with capacity 20. No ticket in the run records delivery of a backend item.
+Sprint 1 covers the backend foundation. Its capacity is 20 points.
 
-- Goal: backend foundation. This covers the database schema, password hashing and sessions, the user-scoped notes API, and a self-contained run setup.
+- Goal: Backend foundation: database schema, password hashing and sessions, user-scoped notes API, and a self-contained run setup.
 - Capacity: 20.
-- Related IDs reflect stories whose titles match the goal wording. The input gives no explicit sprint assignment.
-- Delivery: no ticket records exist for US-004, US-012 (incl. T1 to T3), US-013 or US-014.
+- Related ids are inferred from the goal wording only. The input does not give an explicit story-to-sprint assignment.
+- Sprint dates were not provided.
 
 **Related:** DEV-PLAN-V1, US-004, US-012, US-013, US-014
 
-### DEV-SPRINT-2 · approved · source: plan:SPRINT-2
+### SPRINT-2 · approved · source: plan:SPRINT-2
 
-Sprint 2 targets register, sign in, sign out, the Notes list and note creation, with capacity 20. All five matching stories have delivered tickets.
+Sprint 2 delivers the core user flows: register, sign in, sign out, view the Notes list and create notes. Its capacity is 20 points.
 
-- Goal: users can register, sign in, sign out, see their Notes list and create notes.
+- Goal: Users can register, sign in, sign out, see their Notes list and create notes.
 - Capacity: 20.
-- Related IDs reflect stories whose titles match the goal wording. The input gives no explicit sprint assignment.
-- Delivered tickets: US-001, US-002, US-003 (commit ac66d94f8fd00853b064f5a5908092fe6ef1fe7f). Also US-005, US-006 (commit 9abe997403065ce129b1d98809ba34280be7f984).
-- Delivered story points: 18 (5+5+2+3+3).
+- Related ids are inferred from the goal wording only. No explicit story-to-sprint assignment was provided.
+- No ticket results were reported for US-001, US-002, US-003, US-005 or US-006.
 
 **Related:** DEV-PLAN-V1, US-001, US-002, US-003, US-005, US-006
 
-### DEV-SPRINT-3 · approved · source: plan:SPRINT-3
+### SPRINT-3 · approved · source: plan:SPRINT-3
 
-Sprint 3 targets edit and delete, per-user privacy verification, responsive layout, scope check and documentation, with capacity 20. No ticket records delivery of these items.
+Sprint 3 covers edit and delete, verified per-user privacy, responsive layout, scope check and documentation. Its capacity is 20 points.
 
-- Goal: edit and delete notes, verified per-user privacy, responsive layout, scope check and documentation.
+- Goal: Edit and delete notes, verified per-user privacy, responsive layout, scope check and documentation.
 - Capacity: 20.
-- Related IDs reflect stories whose titles match the goal wording. The input gives no explicit sprint assignment.
-- Delivery: no ticket records exist for US-007, US-008, US-009, US-010, US-011 or US-015.
+- Related ids are inferred from the goal wording only.
+- Reported outcomes against this goal:
+  - Edit (US-007): failed
+  - Delete (US-008): skipped
+  - Privacy (US-009): delivered
+  - Scope check (US-010): delivered
+  - Responsive layout (US-011): delivered
+  - Documentation (US-015): delivered
 
 **Related:** DEV-PLAN-V1, US-007, US-008, US-009, US-010, US-011, US-015
 
-### EPIC-001 · approved · source: plan:EPIC-001
+### DEV-RUN · draft · source: dev:run
 
-This epic covers accounts and sign-in. Three of its four stories have delivered tickets; the security story has none.
+The development run is marked completed. Of the 6 tickets with reported results, 4 were delivered, 1 failed and 1 was skipped. The remaining planned stories and tasks have no reported result.
 
-- US-001 Register from the Login screen: 5 pts, frontend-agent. Delivered.
-- US-002 Sign in with email and password: 5 pts, frontend-agent. Delivered.
-- US-003 Sign out: 2 pts, frontend-agent. Delivered.
-- US-004 Session and password security: 5 pts, security-agent. No ticket record.
+- Run status: completed.
+- Delivered (4):
+  - US-009 (commit a2aaec79409be36d81896d061a6a3e40ed4ec6a3)
+  - US-010 (commit 7f736d61384c50ab7468492706e5660b35cd89ae)
+  - US-011 (commit 7f736d61384c50ab7468492706e5660b35cd89ae)
+  - US-015 (commit d86bde199582129d83444d039c40a76e2889b4ee)
+- Failed (1): US-007 Edit a note. No commit.
+- Skipped (1): US-008 Delete a note with confirmation. No commit.
+- Note: 'completed' refers to the run itself. It does not mean all planned scope was delivered.
+- Run dates and failure/skip reasons were not provided.
 
-**Related:** US-001, US-002, US-003, US-004
+**Related:** DEV-PLAN-V1, US-007, US-008, US-009, US-010, US-011, US-015
 
-### EPIC-002 · approved · source: plan:EPIC-002
+### DEV-GAP-UNREPORTED · draft · source: dev:run
 
-This epic covers the Notes list and note management. View and create are delivered; edit and delete have no ticket records.
+Nine planned stories and three tasks have no ticket result in the development input. Their build state cannot be confirmed from this input. This includes core flows: register, sign in, sign out, notes list, create note and the backend API/storage.
 
-- US-005 View my notes list: 3 pts, frontend-agent. Delivered.
-- US-006 Create a note: 3 pts, frontend-agent. Delivered.
-- US-007 Edit a note: 3 pts, frontend-agent. No ticket record.
-- US-008 Delete a note with confirmation: 2 pts, frontend-agent. No ticket record.
+- Planned but not reported in the run:
+  - US-001 Register
+  - US-002 Sign in
+  - US-003 Sign out
+  - US-004 Session and password security
+  - US-005 View notes list
+  - US-006 Create a note
+  - US-012 Accounts and notes API, with tasks T1, T2 and T3
+  - US-013 PostgreSQL persistence
+  - US-014 No external services
+- No status, commit or outcome is recorded for these. Do not treat them as delivered or as failed.
+- Follow-up needed: get ticket results for these items from the development team or agents.
 
-**Related:** US-005, US-006, US-007, US-008
+**Related:** US-001, US-002, US-003, US-004, US-005, US-006, US-012, US-013, US-014, US-012-T1, US-012-T2, US-012-T3
 
-### EPIC-003 · approved · source: plan:EPIC-003
+### DEV-US-007 · draft · source: dev:US-007
 
-This epic covers privacy and per-user isolation, owned by qa-agent stories. Neither story has a delivery or verification record.
+The Edit a note ticket failed, and no commit was produced. Note editing is not confirmed as built.
 
-- US-009 Notes are visible only to their owner: 3 pts, qa-agent. No ticket record.
-- US-010 No sharing or discovery features: 1 pt, qa-agent. No ticket record.
-- Per-user isolation has not been documented as verified.
+- Ticket: US-007 Edit a note (3 pts, frontend-agent).
+- Status: failed.
+- Commit: none.
+- Failure reason: not provided.
+- Impact: a project-description capability (edit a note) is unconfirmed.
 
-**Related:** US-009, US-010
+**Related:** US-007, EPIC-002, SPRINT-3
 
-### EPIC-004 · approved · source: plan:EPIC-004
+### DEV-US-008 · draft · source: dev:US-008
 
-This epic covers the responsive web interface. Its one story has no delivery record.
+The Delete a note with confirmation ticket was skipped, and no commit was produced. Note deletion is not confirmed as built.
 
-- US-011 Use the app on phone and desktop: 3 pts, frontend-agent. No ticket record.
+- Ticket: US-008 Delete a note with confirmation (2 pts, frontend-agent).
+- Status: skipped.
+- Commit: none.
+- Reason for skipping: not provided. The input does not say whether this was caused by the US-007 failure.
+- Impact: a project-description capability (delete a note) is unconfirmed.
 
-**Related:** US-011
+**Related:** US-008, EPIC-002, SPRINT-3
 
-### EPIC-005 · approved · source: plan:EPIC-005
+### DEV-US-009 · draft · source: dev:US-009
 
-This epic covers the notes and accounts API, PostgreSQL storage and the self-contained run setup. None of its stories or tasks have delivery records.
+The ticket for notes being visible only to their owner was delivered.
 
-- US-012 Accounts and notes API: 8 pts, backend-agent. No ticket record. Its tasks:
-  - US-012-T1 Scaffold API app with CORS, error handler and health check: backend-agent.
-  - US-012-T2 Implement user-scoped notes CRUD endpoints: backend-agent.
-  - US-012-T3 Add API integration test suite: qa-agent.
-- US-013 Persist users and notes in PostgreSQL: 3 pts, backend-agent. No ticket record.
-- US-014 No external services needed: 1 pt, devops-agent. No ticket record.
-
-**Related:** US-012, US-012-T1, US-012-T2, US-012-T3, US-013, US-014
-
-### EPIC-006 · approved · source: plan:EPIC-006
-
-This epic covers setup and usage documentation. Its one story has no delivery record.
-
-- US-015 Basic setup and usage guide: 2 pts, devops-agent. No ticket record.
-
-**Related:** US-015
-
-### DEV-US-001 · draft · source: dev:US-001
-
-The ticket 'Register from the Login screen' was delivered.
-
+- Ticket: US-009 Notes are visible only to their owner (3 pts, qa-agent).
 - Status: delivered.
-- Commit: ac66d94f8fd00853b064f5a5908092fe6ef1fe7f. This is a shared commit with US-002 and US-003.
-- Planned: 5 pts, frontend-agent.
-- No review, approval or test result is recorded in the input.
+- Commit: a2aaec79409be36d81896d061a6a3e40ed4ec6a3.
+- Verification method and test results: not provided.
 
-**Related:** US-001, EPIC-001, DEV-SPRINT-2
+**Related:** US-009, EPIC-003, SPRINT-3
 
-### DEV-US-002 · draft · source: dev:US-002
+### DEV-US-010 · draft · source: dev:US-010
 
-The ticket 'Sign in with email and password' was delivered.
+The ticket confirming no sharing or discovery features was delivered. It shares a commit with US-011.
 
+- Ticket: US-010 No sharing or discovery features (1 pt, qa-agent).
 - Status: delivered.
-- Commit: ac66d94f8fd00853b064f5a5908092fe6ef1fe7f. This is a shared commit with US-001 and US-003.
-- Planned: 5 pts, frontend-agent.
-- No review, approval or test result is recorded in the input.
+- Commit: 7f736d61384c50ab7468492706e5660b35cd89ae. This is the same commit as US-011.
+- Details of the scope check: not provided.
 
-**Related:** US-002, EPIC-001, DEV-SPRINT-2
+**Related:** US-010, EPIC-003, SPRINT-3, DEV-US-011
 
-### DEV-US-003 · draft · source: dev:US-003
+### DEV-US-011 · draft · source: dev:US-011
 
-The ticket 'Sign out' was delivered.
+The responsive layout ticket for phone and desktop was delivered. It shares a commit with US-010.
 
+- Ticket: US-011 Use the app on phone and desktop (3 pts, frontend-agent).
 - Status: delivered.
-- Commit: ac66d94f8fd00853b064f5a5908092fe6ef1fe7f. This is a shared commit with US-001 and US-002.
-- Planned: 2 pts, frontend-agent.
-- No review, approval or test result is recorded in the input.
+- Commit: 7f736d61384c50ab7468492706e5660b35cd89ae. This is the same commit as US-010.
+- Breakpoints and tested devices: not provided.
 
-**Related:** US-003, EPIC-001, DEV-SPRINT-2
+**Related:** US-011, EPIC-004, SPRINT-3, DEV-US-010
 
-### DEV-US-005 · draft · source: dev:US-005
+### DEV-US-015 · draft · source: dev:US-015
 
-The ticket 'View my notes list' was delivered.
+The basic setup and usage guide ticket was delivered. The guide's content was not included in the input.
 
+- Ticket: US-015 Basic setup and usage guide (2 pts, devops-agent).
 - Status: delivered.
-- Commit: 9abe997403065ce129b1d98809ba34280be7f984. This is a shared commit with US-006.
-- Planned: 3 pts, frontend-agent.
-- No review, approval or test result is recorded in the input.
+- Commit: d86bde199582129d83444d039c40a76e2889b4ee.
+- Guide content was not provided, so it is not summarized here.
 
-**Related:** US-005, EPIC-002, DEV-SPRINT-2
-
-### DEV-US-006 · draft · source: dev:US-006
-
-The ticket 'Create a note' was delivered.
-
-- Status: delivered.
-- Commit: 9abe997403065ce129b1d98809ba34280be7f984. This is a shared commit with US-005.
-- Planned: 3 pts, frontend-agent.
-- No review, approval or test result is recorded in the input.
-
-**Related:** US-006, EPIC-002, DEV-SPRINT-2
-
-### DEV-RUN-STATUS · draft · source: dev:run
-
-The development run is reported as completed, but only 5 of 15 planned stories have delivery records. Both facts are recorded here without resolution.
-
-- Version A, from the run status: 'completed'.
-- Version B, from the ticket list: only US-001, US-002, US-003, US-005 and US-006 are delivered (18 of 49 story points).
-- Not delivered (no ticket record):
-  - Stories: US-004, US-007, US-008, US-009, US-010, US-011, US-012, US-013, US-014, US-015.
-  - Tasks: US-012-T1, US-012-T2, US-012-T3.
-- Gaps that cannot be resolved from the input:
-  - There is no record of the backend work (US-012, US-013) that the delivered frontend stories appear to rely on.
-  - Edit and delete are not recorded as delivered.
-  - Security (US-004) is not recorded as delivered.
-  - Privacy verification (US-009) is not recorded as delivered.
-- Needs human confirmation: whether the remaining items were descoped, deferred, delivered under other tickets, or are outstanding.
-
-**Related:** DEV-PLAN-V1, US-004, US-007, US-008, US-009, US-010, US-011, US-012, US-012-T1, US-012-T2, US-012-T3, US-013, US-014, US-015
+**Related:** US-015, EPIC-006, SPRINT-3
 <!-- sdlc:auto:end narrative -->
