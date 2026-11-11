@@ -7,7 +7,7 @@ import NoteEditor from "@/screens/NoteEditor";
 
 const navLinkClass = ({ isActive }: { isActive: boolean }) =>
   [
-    "block rounded-[var(--brand-radius)] px-3 py-2 text-sm font-medium transition-colors",
+    "flex min-h-[44px] items-center rounded-[var(--brand-radius)] px-3 py-2 text-sm font-medium transition-colors",
     isActive ? "bg-[var(--brand-hover)] text-[var(--brand-fg)]" : "text-[var(--brand-fg-muted)]",
   ].join(" ");
 
@@ -15,9 +15,9 @@ const navLinkClass = ({ isActive }: { isActive: boolean }) =>
 // screens shown before sign-in render on their own, with no menu around them.
 function Shell() {
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen flex-col md:flex-row">
       <aside
-        className="w-56 shrink-0 border-r p-4"
+        className="w-full shrink-0 border-b p-4 md:w-56 md:border-b-0 md:border-r"
         style={{
           backgroundColor: "var(--brand-surface)",
           borderColor: "var(--brand-border)",
@@ -35,7 +35,7 @@ function Shell() {
           </NavLink>
         </nav>
       </aside>
-      <main className="flex-1 overflow-auto">
+      <main className="min-w-0 flex-1">
         <Outlet />
       </main>
     </div>

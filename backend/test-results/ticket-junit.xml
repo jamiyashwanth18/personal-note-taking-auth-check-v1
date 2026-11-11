@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="17" skipped="0" tests="20" time="0.139" timestamp="2026-11-11T11:16:50.646013+00:00" hostname="03b2a4974403"><testcase classname="tests.test_setup_docs" name="test_ac040_setup_covers_database_start_and_login[DATABASE_URL]" time="0.001"><failure message="AssertionError: DATABASE_URL&#10;assert None&#10; +  where None = &lt;function search at 0x7ff78cf884a0&gt;('DATABASE_URL', '\n\n```bash\ncd frontend\nnpm install\nnpm run dev\nnpm test          # unit tests (Vitest)\nnpm run lint       # ESL...cd backend\npip install -r requirements.txt\nuvicorn app.main:app --reload\npytest\nruff check .\nruff format .\n```\n', re.IGNORECASE)&#10; +    where &lt;function search at 0x7ff78cf884a0&gt; = re.search&#10; +    and   re.IGNORECASE = re.I">needle = 'DATABASE_URL'
+
+    @pytest.mark.parametrize(
+        "needle",
+        [
+            "DATABASE_URL",
+            "postgresql+psycopg",
+            "alembic|migrat",
+            "uvicorn",
+            "npm run dev",
+            "/login|Login",
+        ],
+    )
+    def test_ac040_setup_covers_database_start_and_login(needle: str) -&gt; None:
+        setup = _section("setup|getting started|running")
+&gt;       assert re.search(needle, setup, re.I), needle
+E       AssertionError: DATABASE_URL
+E       assert None
+E        +  where None = &lt;function search at 0x7ff78cf884a0&gt;('DATABASE_URL', '\n\n```bash\ncd frontend\nnpm install\nnpm run dev\nnpm test          # unit tests (Vitest)\nnpm run lint       # ESL...cd backend\npip install -r requirements.txt\nuvicorn app.main:app --reload\npytest\nruff check .\nruff format .\n```\n', re.IGNORECASE)
+E        +    where &lt;function search at 0x7ff78cf884a0&gt; = re.search
+E        +    and   re.IGNORECASE = re.I
+
+tests/test_setup_docs.py:34: AssertionError</failure></testcase><testcase classname="tests.test_setup_docs" name="test_ac040_setup_covers_database_start_and_login[postgresql+psycopg]" time="0.001"><failure message="AssertionError: postgresql+psycopg&#10;assert None&#10; +  where None = &lt;function search at 0x7ff78cf884a0&gt;('postgresql+psycopg', '\n\n```bash\ncd frontend\nnpm install\nnpm run dev\nnpm test          # unit tests (Vitest)\nnpm run lint       # ESL...cd backend\npip install -r requirements.txt\nuvicorn app.main:app --reload\npytest\nruff check .\nruff format .\n```\n', re.IGNORECASE)&#10; +    where &lt;function search at 0x7ff78cf884a0&gt; = re.search&#10; +    and   re.IGNORECASE = re.I">needle = 'postgresql+psycopg'
+
+    @pytest.mark.parametrize(
+        "needle",
+        [
+            "DATABASE_URL",
+            "postgresql+psycopg",
+            "alembic|migrat",
+            "uvicorn",
+            "npm run dev",
+            "/login|Login",
+        ],
+    )
+    def test_ac040_setup_covers_database_start_and_login(needle: str) -&gt; None:
+        setup = _section("setup|getting started|running")
+&gt;       assert re.search(needle, setup, re.I), needle
+E       AssertionError: postgresql+psycopg
+E       assert None
+E        +  where None = &lt;function search at 0x7ff78cf884a0&gt;('postgresql+psycopg', '\n\n```bash\ncd frontend\nnpm install\nnpm run dev\nnpm test          # unit tests (Vitest)\nnpm run lint       # ESL...cd backend\npip install -r requirements.txt\nuvicorn app.main:app --reload\npytest\nruff check .\nruff format .\n```\n', re.IGNORECASE)
+E        +    where &lt;function search at 0x7ff78cf884a0&gt; = re.search
+E        +    and   re.IGNORECASE = re.I
+
+tests/test_setup_docs.py:34: AssertionError</failure></testcase><testcase classname="tests.test_setup_docs" name="test_ac040_setup_covers_database_start_and_login[alembic|migrat]" time="0.001"><failure message="AssertionError: alembic|migrat&#10;assert None&#10; +  where None = &lt;function search at 0x7ff78cf884a0&gt;('alembic|migrat', '\n\n```bash\ncd frontend\nnpm install\nnpm run dev\nnpm test          # unit tests (Vitest)\nnpm run lint       # ESL...cd backend\npip install -r requirements.txt\nuvicorn app.main:app --reload\npytest\nruff check .\nruff format .\n```\n', re.IGNORECASE)&#10; +    where &lt;function search at 0x7ff78cf884a0&gt; = re.search&#10; +    and   re.IGNORECASE = re.I">needle = 'alembic|migrat'
+
+    @pytest.mark.parametrize(
+        "needle",
+        [
+            "DATABASE_URL",
+            "postgresql+psycopg",
+            "alembic|migrat",
+            "uvicorn",
+            "npm run dev",
+            "/login|Login",
+        ],
+    )
+    def test_ac040_setup_covers_database_start_and_login(needle: str) -&gt; None:
+        setup = _section("setup|getting started|running")
+&gt;       assert re.search(needle, setup, re.I), needle
+E       AssertionError: alembic|migrat
+E       assert None
+E        +  where None = &lt;function search at 0x7ff78cf884a0&gt;('alembic|migrat', '\n\n```bash\ncd frontend\nnpm install\nnpm run dev\nnpm test          # unit tests (Vitest)\nnpm run lint       # ESL...cd backend\npip install -r requirements.txt\nuvicorn app.main:app --reload\npytest\nruff check .\nruff format .\n```\n', re.IGNORECASE)
+E        +    where &lt;function search at 0x7ff78cf884a0&gt; = re.search
+E        +    and   re.IGNORECASE = re.I
+
+tests/test_setup_docs.py:34: AssertionError</failure></testcase><testcase classname="tests.test_setup_docs" name="test_ac040_setup_covers_database_start_and_login[uvicorn]" time="0.001" /><testcase classname="tests.test_setup_docs" name="test_ac040_setup_covers_database_start_and_login[npm run dev]" time="0.001" /><testcase classname="tests.test_setup_docs" name="test_ac040_setup_covers_database_start_and_login[/login|Login]" time="0.001"><failure message="AssertionError: /login|Login&#10;assert None&#10; +  where None = &lt;function search at 0x7ff78cf884a0&gt;('/login|Login', '\n\n```bash\ncd frontend\nnpm install\nnpm run dev\nnpm test          # unit tests (Vitest)\nnpm run lint       # ESL...cd backend\npip install -r requirements.txt\nuvicorn app.main:app --reload\npytest\nruff check .\nruff format .\n```\n', re.IGNORECASE)&#10; +    where &lt;function search at 0x7ff78cf884a0&gt; = re.search&#10; +    and   re.IGNORECASE = re.I">needle = '/login|Login'
+
+    @pytest.mark.parametrize(
+        "needle",
+        [
+            "DATABASE_URL",
+            "postgresql+psycopg",
+            "alembic|migrat",
+            "uvicorn",
+            "npm run dev",
+            "/login|Login",
+        ],
+    )
+    def test_ac040_setup_covers_database_start_and_login(needle: str) -&gt; None:
+        setup = _section("setup|getting started|running")
+&gt;       assert re.search(needle, setup, re.I), needle
+E       AssertionError: /login|Login
+E       assert None
+E        +  where None = &lt;function search at 0x7ff78cf884a0&gt;('/login|Login', '\n\n```bash\ncd frontend\nnpm install\nnpm run dev\nnpm test          # unit tests (Vitest)\nnpm run lint       # ESL...cd backend\npip install -r requirements.txt\nuvicorn app.main:app --reload\npytest\nruff check .\nruff format .\n```\n', re.IGNORECASE)
+E        +    where &lt;function search at 0x7ff78cf884a0&gt; = re.search
+E        +    and   re.IGNORECASE = re.I
+
+tests/test_setup_docs.py:34: AssertionError</failure></testcase><testcase classname="tests.test_setup_docs" name="test_ac040_setup_mentions_postgresql_and_install_steps" time="0.001"><failure message="AssertionError: assert None&#10; +  where None = &lt;function search at 0x7ff78cf884a0&gt;('postgres', '\n\n```bash\ncd frontend\nnpm install\nnpm run dev\nnpm test          # unit tests (Vitest)\nnpm run lint       # ESL...cd backend\npip install -r requirements.txt\nuvicorn app.main:app --reload\npytest\nruff check .\nruff format .\n```\n', re.IGNORECASE)&#10; +    where &lt;function search at 0x7ff78cf884a0&gt; = re.search&#10; +    and   re.IGNORECASE = re.I">def test_ac040_setup_mentions_postgresql_and_install_steps() -&gt; None:
+        setup = _section("setup|getting started|running")
+&gt;       assert re.search(r"postgres", setup, re.I)
+E       AssertionError: assert None
+E        +  where None = &lt;function search at 0x7ff78cf884a0&gt;('postgres', '\n\n```bash\ncd frontend\nnpm install\nnpm run dev\nnpm test          # unit tests (Vitest)\nnpm run lint       # ESL...cd backend\npip install -r requirements.txt\nuvicorn app.main:app --reload\npytest\nruff check .\nruff format .\n```\n', re.IGNORECASE)
+E        +    where &lt;function search at 0x7ff78cf884a0&gt; = re.search
+E        +    and   re.IGNORECASE = re.I
+
+tests/test_setup_docs.py:39: AssertionError</failure></testcase><testcase classname="tests.test_setup_docs" name="test_ac041_usage_explains_each_action[regist|sign up]" time="0.001"><failure message="AssertionError: README has no heading matching 'usage|how to use'&#10;assert None">needle = 'regist|sign up'
+
+    @pytest.mark.parametrize(
+        "needle",
+        [
+            r"regist|sign up",
+            r"sign in|log ?in",
+            r"creat",
+            r"edit",
+            r"delet",
+            r"sign out|log ?out",
+        ],
+    )
+    def test_ac041_usage_explains_each_action(needle: str) -&gt; None:
+&gt;       assert re.search(needle, _section("usage|how to use"), re.I), needle
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_setup_docs.py:55: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+pattern = 'usage|how to use'
+
+    def _section(pattern: str) -&gt; str:
+        """Text from the first heading matching `pattern` up to the next heading of the same level."""
+        m = re.search(rf"^(#+)[ \t]+[^\n]*(?:{pattern})[^\n]*$", README, re.I | re.M)
+&gt;       assert m, f"README has no heading matching {pattern!r}"
+E       AssertionError: README has no heading matching 'usage|how to use'
+E       assert None
+
+tests/test_setup_docs.py:14: AssertionError</failure></testcase><testcase classname="tests.test_setup_docs" name="test_ac041_usage_explains_each_action[sign in|log ?in]" time="0.000"><failure message="AssertionError: README has no heading matching 'usage|how to use'&#10;assert None">needle = 'sign in|log ?in'
+
+    @pytest.mark.parametrize(
+        "needle",
+        [
+            r"regist|sign up",
+            r"sign in|log ?in",
+            r"creat",
+            r"edit",
+            r"delet",
+            r"sign out|log ?out",
+        ],
+    )
+    def test_ac041_usage_explains_each_action(needle: str) -&gt; None:
+&gt;       assert re.search(needle, _section("usage|how to use"), re.I), needle
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_setup_docs.py:55: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+pattern = 'usage|how to use'
+
+    def _section(pattern: str) -&gt; str:
+        """Text from the first heading matching `pattern` up to the next heading of the same level."""
+        m = re.search(rf"^(#+)[ \t]+[^\n]*(?:{pattern})[^\n]*$", README, re.I | re.M)
+&gt;       assert m, f"README has no heading matching {pattern!r}"
+E       AssertionError: README has no heading matching 'usage|how to use'
+E       assert None
+
+tests/test_setup_docs.py:14: AssertionError</failure></testcase><testcase classname="tests.test_setup_docs" name="test_ac041_usage_explains_each_action[creat]" time="0.000"><failure message="AssertionError: README has no heading matching 'usage|how to use'&#10;assert None">needle = 'creat'
+
+    @pytest.mark.parametrize(
+        "needle",
+        [
+            r"regist|sign up",
+            r"sign in|log ?in",
+            r"creat",
+            r"edit",
+            r"delet",
+            r"sign out|log ?out",
+        ],
+    )
+    def test_ac041_usage_explains_each_action(needle: str) -&gt; None:
+&gt;       assert re.search(needle, _section("usage|how to use"), re.I), needle
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_setup_docs.py:55: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+pattern = 'usage|how to use'
+
+    def _section(pattern: str) -&gt; str:
+        """Text from the first heading matching `pattern` up to the next heading of the same level."""
+        m = re.search(rf"^(#+)[ \t]+[^\n]*(?:{pattern})[^\n]*$", README, re.I | re.M)
+&gt;       assert m, f"README has no heading matching {pattern!r}"
+E       AssertionError: README has no heading matching 'usage|how to use'
+E       assert None
+
+tests/test_setup_docs.py:14: AssertionError</failure></testcase><testcase classname="tests.test_setup_docs" name="test_ac041_usage_explains_each_action[edit]" time="0.000"><failure message="AssertionError: README has no heading matching 'usage|how to use'&#10;assert None">needle = 'edit'
+
+    @pytest.mark.parametrize(
+        "needle",
+        [
+            r"regist|sign up",
+            r"sign in|log ?in",
+            r"creat",
+            r"edit",
+            r"delet",
+            r"sign out|log ?out",
+        ],
+    )
+    def test_ac041_usage_explains_each_action(needle: str) -&gt; None:
+&gt;       assert re.search(needle, _section("usage|how to use"), re.I), needle
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_setup_docs.py:55: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+pattern = 'usage|how to use'
+
+    def _section(pattern: str) -&gt; str:
+        """Text from the first heading matching `pattern` up to the next heading of the same level."""
+        m = re.search(rf"^(#+)[ \t]+[^\n]*(?:{pattern})[^\n]*$", README, re.I | re.M)
+&gt;       assert m, f"README has no heading matching {pattern!r}"
+E       AssertionError: README has no heading matching 'usage|how to use'
+E       assert None
+
+tests/test_setup_docs.py:14: AssertionError</failure></testcase><testcase classname="tests.test_setup_docs" name="test_ac041_usage_explains_each_action[delet]" time="0.001"><failure message="AssertionError: README has no heading matching 'usage|how to use'&#10;assert None">needle = 'delet'
+
+    @pytest.mark.parametrize(
+        "needle",
+        [
+            r"regist|sign up",
+            r"sign in|log ?in",
+            r"creat",
+            r"edit",
+            r"delet",
+            r"sign out|log ?out",
+        ],
+    )
+    def test_ac041_usage_explains_each_action(needle: str) -&gt; None:
+&gt;       assert re.search(needle, _section("usage|how to use"), re.I), needle
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_setup_docs.py:55: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+pattern = 'usage|how to use'
+
+    def _section(pattern: str) -&gt; str:
+        """Text from the first heading matching `pattern` up to the next heading of the same level."""
+        m = re.search(rf"^(#+)[ \t]+[^\n]*(?:{pattern})[^\n]*$", README, re.I | re.M)
+&gt;       assert m, f"README has no heading matching {pattern!r}"
+E       AssertionError: README has no heading matching 'usage|how to use'
+E       assert None
+
+tests/test_setup_docs.py:14: AssertionError</failure></testcase><testcase classname="tests.test_setup_docs" name="test_ac041_usage_explains_each_action[sign out|log ?out]" time="0.000"><failure message="AssertionError: README has no heading matching 'usage|how to use'&#10;assert None">needle = 'sign out|log ?out'
+
+    @pytest.mark.parametrize(
+        "needle",
+        [
+            r"regist|sign up",
+            r"sign in|log ?in",
+            r"creat",
+            r"edit",
+            r"delet",
+            r"sign out|log ?out",
+        ],
+    )
+    def test_ac041_usage_explains_each_action(needle: str) -&gt; None:
+&gt;       assert re.search(needle, _section("usage|how to use"), re.I), needle
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_setup_docs.py:55: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+pattern = 'usage|how to use'
+
+    def _section(pattern: str) -&gt; str:
+        """Text from the first heading matching `pattern` up to the next heading of the same level."""
+        m = re.search(rf"^(#+)[ \t]+[^\n]*(?:{pattern})[^\n]*$", README, re.I | re.M)
+&gt;       assert m, f"README has no heading matching {pattern!r}"
+E       AssertionError: README has no heading matching 'usage|how to use'
+E       assert None
+
+tests/test_setup_docs.py:14: AssertionError</failure></testcase><testcase classname="tests.test_setup_docs" name="test_ac041_usage_lists_v1_limits[email verification]" time="0.001"><failure message="AssertionError: README has no heading matching 'limit|usage|how to use'&#10;assert None">limit = 'email verification'
+
+    @pytest.mark.parametrize(
+        "limit",
+        [r"email verification", r"password reset", r"social login", r"sharing", r"tags", r"search"],
+    )
+    def test_ac041_usage_lists_v1_limits(limit: str) -&gt; None:
+&gt;       section = _section("limit|usage|how to use")
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_setup_docs.py:63: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+pattern = 'limit|usage|how to use'
+
+    def _section(pattern: str) -&gt; str:
+        """Text from the first heading matching `pattern` up to the next heading of the same level."""
+        m = re.search(rf"^(#+)[ \t]+[^\n]*(?:{pattern})[^\n]*$", README, re.I | re.M)
+&gt;       assert m, f"README has no heading matching {pattern!r}"
+E       AssertionError: README has no heading matching 'limit|usage|how to use'
+E       assert None
+
+tests/test_setup_docs.py:14: AssertionError</failure></testcase><testcase classname="tests.test_setup_docs" name="test_ac041_usage_lists_v1_limits[password reset]" time="0.000"><failure message="AssertionError: README has no heading matching 'limit|usage|how to use'&#10;assert None">limit = 'password reset'
+
+    @pytest.mark.parametrize(
+        "limit",
+        [r"email verification", r"password reset", r"social login", r"sharing", r"tags", r"search"],
+    )
+    def test_ac041_usage_lists_v1_limits(limit: str) -&gt; None:
+&gt;       section = _section("limit|usage|how to use")
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_setup_docs.py:63: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+pattern = 'limit|usage|how to use'
+
+    def _section(pattern: str) -&gt; str:
+        """Text from the first heading matching `pattern` up to the next heading of the same level."""
+        m = re.search(rf"^(#+)[ \t]+[^\n]*(?:{pattern})[^\n]*$", README, re.I | re.M)
+&gt;       assert m, f"README has no heading matching {pattern!r}"
+E       AssertionError: README has no heading matching 'limit|usage|how to use'
+E       assert None
+
+tests/test_setup_docs.py:14: AssertionError</failure></testcase><testcase classname="tests.test_setup_docs" name="test_ac041_usage_lists_v1_limits[social login]" time="0.000"><failure message="AssertionError: README has no heading matching 'limit|usage|how to use'&#10;assert None">limit = 'social login'
+
+    @pytest.mark.parametrize(
+        "limit",
+        [r"email verification", r"password reset", r"social login", r"sharing", r"tags", r"search"],
+    )
+    def test_ac041_usage_lists_v1_limits(limit: str) -&gt; None:
+&gt;       section = _section("limit|usage|how to use")
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_setup_docs.py:63: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+pattern = 'limit|usage|how to use'
+
+    def _section(pattern: str) -&gt; str:
+        """Text from the first heading matching `pattern` up to the next heading of the same level."""
+        m = re.search(rf"^(#+)[ \t]+[^\n]*(?:{pattern})[^\n]*$", README, re.I | re.M)
+&gt;       assert m, f"README has no heading matching {pattern!r}"
+E       AssertionError: README has no heading matching 'limit|usage|how to use'
+E       assert None
+
+tests/test_setup_docs.py:14: AssertionError</failure></testcase><testcase classname="tests.test_setup_docs" name="test_ac041_usage_lists_v1_limits[sharing]" time="0.000"><failure message="AssertionError: README has no heading matching 'limit|usage|how to use'&#10;assert None">limit = 'sharing'
+
+    @pytest.mark.parametrize(
+        "limit",
+        [r"email verification", r"password reset", r"social login", r"sharing", r"tags", r"search"],
+    )
+    def test_ac041_usage_lists_v1_limits(limit: str) -&gt; None:
+&gt;       section = _section("limit|usage|how to use")
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_setup_docs.py:63: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+pattern = 'limit|usage|how to use'
+
+    def _section(pattern: str) -&gt; str:
+        """Text from the first heading matching `pattern` up to the next heading of the same level."""
+        m = re.search(rf"^(#+)[ \t]+[^\n]*(?:{pattern})[^\n]*$", README, re.I | re.M)
+&gt;       assert m, f"README has no heading matching {pattern!r}"
+E       AssertionError: README has no heading matching 'limit|usage|how to use'
+E       assert None
+
+tests/test_setup_docs.py:14: AssertionError</failure></testcase><testcase classname="tests.test_setup_docs" name="test_ac041_usage_lists_v1_limits[tags]" time="0.000"><failure message="AssertionError: README has no heading matching 'limit|usage|how to use'&#10;assert None">limit = 'tags'
+
+    @pytest.mark.parametrize(
+        "limit",
+        [r"email verification", r"password reset", r"social login", r"sharing", r"tags", r"search"],
+    )
+    def test_ac041_usage_lists_v1_limits(limit: str) -&gt; None:
+&gt;       section = _section("limit|usage|how to use")
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_setup_docs.py:63: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+pattern = 'limit|usage|how to use'
+
+    def _section(pattern: str) -&gt; str:
+        """Text from the first heading matching `pattern` up to the next heading of the same level."""
+        m = re.search(rf"^(#+)[ \t]+[^\n]*(?:{pattern})[^\n]*$", README, re.I | re.M)
+&gt;       assert m, f"README has no heading matching {pattern!r}"
+E       AssertionError: README has no heading matching 'limit|usage|how to use'
+E       assert None
+
+tests/test_setup_docs.py:14: AssertionError</failure></testcase><testcase classname="tests.test_setup_docs" name="test_ac041_usage_lists_v1_limits[search]" time="0.000"><failure message="AssertionError: README has no heading matching 'limit|usage|how to use'&#10;assert None">limit = 'search'
+
+    @pytest.mark.parametrize(
+        "limit",
+        [r"email verification", r"password reset", r"social login", r"sharing", r"tags", r"search"],
+    )
+    def test_ac041_usage_lists_v1_limits(limit: str) -&gt; None:
+&gt;       section = _section("limit|usage|how to use")
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_setup_docs.py:63: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+pattern = 'limit|usage|how to use'
+
+    def _section(pattern: str) -&gt; str:
+        """Text from the first heading matching `pattern` up to the next heading of the same level."""
+        m = re.search(rf"^(#+)[ \t]+[^\n]*(?:{pattern})[^\n]*$", README, re.I | re.M)
+&gt;       assert m, f"README has no heading matching {pattern!r}"
+E       AssertionError: README has no heading matching 'limit|usage|how to use'
+E       assert None
+
+tests/test_setup_docs.py:14: AssertionError</failure></testcase><testcase classname="tests.test_setup_docs" name="test_nfr016_documentation_is_short" time="0.000" /></testsuite></testsuites>
