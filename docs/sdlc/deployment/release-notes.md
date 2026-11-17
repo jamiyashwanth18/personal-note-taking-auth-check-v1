@@ -3,6 +3,17 @@
 > Maintained by QuorQ AI SDLC. Text between `sdlc:auto` markers is regenerated; anything outside them is yours and is kept.
 
 <!-- sdlc:auto:start releases -->
+## d394b3150fac — 2026-11-11
+
+**Commit:** `d394b31`
+
+**Delivered:**
+- US-007: Edit a note
+- US-009: Notes are visible only to their owner
+- US-010: No sharing or discovery features
+- US-011: Use the app on phone and desktop
+- US-015: Basic setup and usage guide
+
 ## dae16db50b4d — 2026-11-10
 
 **Commit:** `dae16db`

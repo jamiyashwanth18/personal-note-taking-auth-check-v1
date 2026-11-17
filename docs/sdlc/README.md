@@ -15,7 +15,7 @@ Screens
 - Notes list
 - Note editor
 
-**Documentation version:** v14
+**Documentation version:** v15
 <!-- sdlc:auto:end overview -->
 
 ## Contents
@@ -25,9 +25,10 @@ Screens
 |---|---|
 | [Requirements](requirements/README.md) | v1 approved |
 | [Architecture](architecture/README.md) | 28 entries |
+| [Planning](planning/README.md) | 0 entries |
 | [Development](development/README.md) | 12 entries |
 | [Testing](testing/README.md) | 7 entries |
-| [Deployment](deployment/README.md) | 3 entries |
+| [Deployment](deployment/README.md) | 1 entry |
 | [Maintenance](maintenance/README.md) | 0 entries |
 | [Data model](architecture/data-model.md) | generated |
 | [API (OpenAPI)](architecture/api/openapi.yaml) | generated |
@@ -39,7 +40,7 @@ Screens
 | [Tests](testing/test-cases.md) | 147 tests |
 | [Deployment guide](deployment/deployment-guide.md) | deployed |
 | [Runbook](deployment/runbook.md) | deployed |
-| [Release notes](deployment/release-notes.md) | 3 releases |
+| [Release notes](deployment/release-notes.md) | 4 releases |
 | [Traceability matrix](traceability-matrix.md) | 15 requirements |
-| [Changelog](CHANGELOG.md) | 14 versions |
+| [Changelog](CHANGELOG.md) | 15 versions |
 <!-- sdlc:auto:end contents -->

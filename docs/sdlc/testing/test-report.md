@@ -67,6 +67,10 @@ Passed: 41 · Failed: 0 · Skipped: 0 · Flaky: 0 · Total: 41
 <!-- sdlc:auto:start dev-checks -->
 ### Sprint 3
 
+_No test steps recorded._
+
+### Sprint 3
+
 | Step | Status | Ticket | Finished |
 |---|---|---|---|
 | run_checks | failed | — | 2026-11-11 |
